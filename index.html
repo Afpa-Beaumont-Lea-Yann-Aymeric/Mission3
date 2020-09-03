@@ -22,16 +22,31 @@
 
 <body>
 
-<header></header>
-<div class="d-flex">
-    <div class="container mt-5">
-        <div class="row">
-        </div>
+<header class="fixed-top h-15"></header>
+
+
+<div id="cart" class="bg-light h-85 border-left border-dark position-fixed d-none d-md-flex flex-md-column"
+     style="right:0; top:77px;width:200px; height:calc(100% - 77px)">
+    <button class="btn no-radius btn-primary w-100 font-weight-bold" style="font-size: x-large">
+        <i class="fas fa-shopping-cart"><span class="badge badge-warning"
+                                              style="top:-1rem; left:-0.5rem; font-size: 0.75rem">1</span></i>
+        <span>Panier</span>
+    </button>
+    <div class="h-100">
     </div>
-    <div class="bg-dark w-25 flex-column">Test</div>
+    <span class="text-center font-weight-bold border-top border-bottom border-secondary">Total à payer : 12,00 €</span>
+    <a href="" class="text-center my-3"><i class="fas fa-trash-alt"></i><span
+            class="ml-2">Vider le panier</span></a>
+    <button class="btn btn-primary m-2 mt-auto font-weight-bold">Valider et payer</button>
 </div>
 
-<footer></footer>
+<div id="collection" class="container" style="padding-top:6rem;">
+    <div class="row">
+    </div>
+</div>
+
+<footer class="w-85"></footer>
+
 
 </body>
 
