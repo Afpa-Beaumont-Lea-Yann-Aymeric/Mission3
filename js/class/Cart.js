@@ -10,8 +10,23 @@ class Cart {
         this._totalToPay = totalToPay;
     }
 
-    generateContent() {
-
+    /**
+     *
+     * @param {Album} album
+     * @returns {string}
+     */
+    generateContent(album) {
+        return '<li class="list-group-item d-block p-1">\n' +
+            '                <img class="w-75 d-block m-auto" src="'+ album.generateSrcImg() +'">\n' +
+            '                <ul class="pagination pagination-sm mt-1">\n' +
+            '                    <li class="page-item disabled">\n' +
+            '                        <a class="page-link" href="#" tabindex="-1">-</a>\n' +
+            '                    </li>\n' +
+            '                    <li class="page-item active"><a class="page-link" href="#">1</a></li>\n' +
+            '                    <li class="page-item"><a class="page-link" href="">+</a></li>\n' +
+            '                    <li class="m-auto font-weight-bold">'+ album.price +' €</li>\n' +
+            '                </ul>\n' +
+            '            </li>'
     }
 
     addAlbum(album) {

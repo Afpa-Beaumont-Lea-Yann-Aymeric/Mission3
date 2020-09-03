@@ -17,8 +17,8 @@ class Album {
         return parseFloat(price).toFixed(2).replace(".", ",");
     }
 
-    generateSrcImg(serie, number, title){
-        let imgSrc = "img/albums/" + serie + "-" + number + "-" + title;
+    generateSrcImg(){
+        let imgSrc = "img/albums/" + this._serie + "-" + this._number + "-" + this._title;
         return imgSrc.replace(/'|!|\?|\.|"|:|\$/g, "") + ".jpg";
     }
 
