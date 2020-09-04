@@ -5,7 +5,7 @@ class Cart {
      * @param {number} totalToPay
      */
     constructor(nbAlbums, albums, totalToPay,) {
-        this._nbAlbums = nbAlbums;
+        this._nbAlbums = albums.length;
         this._albums = albums;
         this._totalToPay = totalToPay;
     }
@@ -15,7 +15,7 @@ class Cart {
      * @param {Album} album
      * @returns {string}
      */
-    generateContent(album) {
+    generateItem(album) {
         return '<li class="list-group-item d-block p-1">\n' +
             '                <img class="w-75 d-block m-auto" src="'+ album.generateSrcImg() +'">\n' +
             '                <ul class="pagination pagination-sm mt-1">\n' +
@@ -24,13 +24,19 @@ class Cart {
             '                    </li>\n' +
             '                    <li class="page-item active"><a class="page-link" href="#">1</a></li>\n' +
             '                    <li class="page-item"><a class="page-link" href="">+</a></li>\n' +
-            '                    <li class="m-auto font-weight-bold">'+ album.price +' €</li>\n' +
+            '                    <li class="m-auto font-weight-bold">'+ album.formatedPrice +' €</li>\n' +
             '                </ul>\n' +
             '            </li>'
     }
 
     addAlbum(album) {
         this._albums.push(album);
+        this.totalToPay += album.price;
+        this.nbAlbums = this._albums.length;
+    }
+
+    formatPrice(price) {
+        return price.toFixed(2).replace(".", ",");
     }
 
     get nbAlbums() {

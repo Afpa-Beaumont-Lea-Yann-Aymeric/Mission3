@@ -9,12 +9,13 @@ class Album {
         this._number = album.numero;
         this._serie = series.get(album.idSerie).nom;
         this._author = auteurs.get(album.idAuteur).nom;
-        this._price = this.formatPrice(album.prix);
+        this._price = parseFloat(album.prix);
+        this._formatedPrice = this.formatPrice(this._price);
         this._img = this.generateSrcImg(this._serie,this._number,this._title);
     }
 
     formatPrice(price) {
-        return parseFloat(price).toFixed(2).replace(".", ",");
+        return price.toFixed(2).replace(".", ",");
     }
 
     generateSrcImg(){
@@ -28,13 +29,13 @@ class Album {
      */
     generateHTMLCard(){
         return '<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5">\n' +
-            '               <div id="'+ this.id +'" class="card border border-dark">\n' +
-            '                <img class="card-img" src="' + this.img + '" alt="Card image cap">\n' +
+            '               <div id="'+ this._id +'" class="card border border-dark">\n' +
+            '                <img class="card-img" src="' + this._img + '" alt="Card image cap">\n' +
             '                <div class="card-body">\n' +
-            '                    <p class="card-title font-weight-bolder">Rahan fils des âges farouches</p>\n' +
-            '                    <p class="card-text">' + this.number + ' ' + this.title + '</p>\n' +
-            '                    <p class="card-subtitle text-muted">Par ' + this.author + '</p>\n' +
-            '                    <p class="card-subtitle d-flex justify-content-end">' + this.price + ' €' + '</p>\n' +
+            '                    <p class="card-title font-weight-bolder">'+ this._serie +'</p>\n' +
+            '                    <p class="card-text">' + this._number + ' ' + this._title + '</p>\n' +
+            '                    <p class="card-subtitle text-muted">Par ' + this._author + '</p>\n' +
+            '                    <p class="card-subtitle d-flex justify-content-end">' + this._formatedPrice + ' €' + '</p>\n' +
             '                    <button class="btn btn-primary addCart">Ajouter au panier</button>\n' +
             '                </div>\n' +
             '            </div>\n' +
@@ -97,5 +98,13 @@ class Album {
 
     set id(value) {
         this._id = value;
+    }
+
+    get formatedPrice() {
+        return this._formatedPrice;
+    }
+
+    set formatedPrice(value) {
+        this._formatedPrice = value;
     }
 }
