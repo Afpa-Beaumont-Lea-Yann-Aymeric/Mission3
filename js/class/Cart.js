@@ -16,7 +16,7 @@ class Cart {
      * @returns {string}
      */
     generateItem(album) {
-        return '<li class="list-group-item d-block p-1">\n' +
+        let item ='<li class="list-group-item d-block p-1">\n' +
             '                <img class="w-75 d-block m-auto" src="'+ album.generateSrcImg() +'">\n' +
             '                <ul class="pagination pagination-sm mt-1">\n' +
             '                    <li class="page-item disabled">\n' +
@@ -26,13 +26,28 @@ class Cart {
             '                    <li class="page-item"><a class="page-link" href="">+</a></li>\n' +
             '                    <li class="m-auto font-weight-bold">'+ album.formatedPrice +' €</li>\n' +
             '                </ul>\n' +
-            '            </li>'
+            '            </li>';
+        $("#cart-body .list-group").append(item);
+    }
+
+    incrementItem(){
+
     }
 
     addAlbum(album) {
+        let contain = false;
+        this._albums.forEach(function(value){
+            if(value.id === album.id) contain = true;
+        })
+        if(contain){
+            this.incrementItem();
+        }else{
+            this.generateItem(album);
+        }
         this._albums.push(album);
         this.totalToPay += album.price;
         this.nbAlbums = this._albums.length;
+        this.generateItem(album);
     }
 
     formatPrice(price) {

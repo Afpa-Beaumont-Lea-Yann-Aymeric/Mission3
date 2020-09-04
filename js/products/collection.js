@@ -10,7 +10,6 @@ $(document).ready(function () {
         let idCard = $(this).parent(".card-body").parent(".card").attr("id");
         let album = new Album(idCard);
         cart.addAlbum(album);
-        $("#cart-body .list-group").append(cart.generateItem(album));
         $("#totalToPay").text(cart.formatPrice(cart.totalToPay));
         $(".badge.badge-warning").text(cart.nbAlbums);
     })
