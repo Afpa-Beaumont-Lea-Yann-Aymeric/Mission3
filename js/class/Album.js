@@ -2,20 +2,21 @@ class Album {
     /**
      * @param album
      */
-    constructor(album) {
+    constructor() {
+        this._id = id;
         this._title = album.titre;
         this._number = album.numero;
         this._serie = series.get(album.idSerie).nom;
         this._author = auteurs.get(album.idAuteur).nom;
         this._price = this.formatPrice(album.prix);
-        this._img = this.generateSrcImg(this._serie,this._number,this._title);
+        this._img = this.generateSrcImg(this._serie, this._number, this._title);
     }
 
     formatPrice(price) {
         return parseFloat(price).toFixed(2).replace(".", ",");
     }
 
-    generateSrcImg(serie, number, title){
+    generateSrcImg(serie, number, title) {
         let imgSrc = "img/albums/" + serie + "-" + number + "-" + title;
         return imgSrc.replace(/'|!|\?|\.|"|:|\$/g, "") + ".jpg";
     }
@@ -24,16 +25,16 @@ class Album {
      * Generate a Bootstrap card with informations of the album
      * @return {HTMLDivElement}
      */
-    generateHTMLCard(){
+    generateHTMLCard() {
         return '<div class="col-6 col-lg-4 col-xl-3 mb-5">\n' +
-            '               <div class="card border border-dark">\n' +
+            '               <div id="'+ this.id +'" class="card border border-dark">\n' +
             '                <img class="card-img" src="' + this.img + '" alt="Card image cap">\n' +
-            '                <div class="card-body">\n' +
-            '                    <h5 class="card-title">' + this.serie + '</h5>\n' +
-            '                    <h6 class="card-subtitle text-muted">' + this.number + ' ' + this.title + '</h6>\n' +
-            '                    <small class="card-text">Par ' + this.author + '</small>\n' +
-            '                    <p class="card-text  d-flex justify-content-end">' + this.price + ' €' + '</p>\n' +
-            '                    <button class="btn btn-primary addCart">Ajouter au panier</button>\n' +
+            '                   <div class="card-body">\n' +
+            '                       <h5 class="card-title">' + this.serie + '</h5>\n' +
+            '                       <h6 class="card-subtitle text-muted">' + this.number + ' ' + this.title + '</h6>\n' +
+            '                       <small class="card-text">Par ' + this.author + '</small>\n' +
+            '                       <p class="card-text  d-flex justify-content-end">' + this.price + ' €' + '</p>\n' +
+            '                       <button class="btn btn-primary addCart">Ajouter au panier</button>\n' +
             '                </div>\n' +
             '            </div>\n' +
             '        </div>'
@@ -86,5 +87,14 @@ class Album {
 
     set number(value) {
         this._number = value;
+    }
+
+
+    get id() {
+        return this._id;
+    }
+
+    set id(value) {
+        this._id = value;
     }
 }
