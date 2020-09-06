@@ -13,8 +13,13 @@
     <script src="data/albums.js" defer></script>
     <script src="data/auteurs.js" defer></script>
     <script src="data/series.js" defer></script>
+    <script src="js/helpers/helpers.js" defer></script>
+    <script src="js/class/Collection.js" defer></script>
+    <script src="js/class/Filters.js" defer></script>
+    <script src="js/class/Pagination.js" defer></script>
     <script src="js/class/Album.js" defer></script>
     <script src="js/class/Cart.js" defer></script>
+    <script src="js/class/Search.js" defer></script>
     <script src="js/products/collection.js" defer></script>
 
     <title>Title</title>
@@ -23,7 +28,7 @@
 
 <body>
 
-<header class="fixed-top h-15">
+<header class="fixed-top">
     <nav class="navbar navbar-light bg-light border-bottom border-dark d-flex">
         <a href="index.html" class="d-none d-md-block navbar-brand"><img id="logo" src="img/logo.png"></a>
         <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse"
@@ -31,16 +36,17 @@
                 aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="flex-fill mx-2 mx-md-5">
-            <form>
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Rechercher un produit"
-                           aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                    </div>
+        <div class="flex-fill mx-2 mx-md-5" style="height:38px;">
+            <form class="input-group">
+                <input id="search" type="text" class="form-control" placeholder="Rechercher un produit"
+                       aria-label="Recipient's username" aria-describedby="button-addon2" autofocus>
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
                 </div>
             </form>
+            <div id="suggest" class="bg-white border border-dark" style="display:none">
+
+            </div>
         </div>
         <div class="d-none d-md-block">
             <a href="account.html" class="h-100 text-center h5 d-block">
@@ -63,14 +69,24 @@
 
         </ul>
     </div>
-    <p class="text-center font-weight-bold border-top border-bottom border-secondary">Total à payer : <span id="totalToPay">0,00</span> €</p>
+    <p class="text-center font-weight-bold border-top border-bottom border-secondary">Total à payer : <span
+            id="totalToPay">0,00</span> €</p>
     <a href="" class="text-center my-3"><i class="fas fa-trash-alt"></i><span
             class="ml-2">Vider le panier</span></a>
     <button class="btn btn-primary m-2 mt-auto font-weight-bold">Valider et payer</button>
 </div>
 
-<div id="collection" class="container-fluid" style="padding-top:6rem;">
-    <div class="row">
+<div id="content" style="padding-top:6rem;">
+    <div class="container-fluid">
+        <ul class="pagination justify-content-center">
+        </ul>
+
+        <!-- Show the collection, this element is fill by the class Collection -->
+        <div id="collection" class="row">
+        </div>
+
+        <ul class="pagination justify-content-center">
+        </ul>
     </div>
 </div>
 

@@ -92,7 +92,7 @@ auteurs.set("102", {nom: "Jacobs"});
 auteurs.set("103", {nom: "Vance, Van Hamme"});
 auteurs.set("104", {nom: "Giraud, Van Hamme"});
 auteurs.set("109", {nom: "Aleston, Tota, Lamirand"});
-auteurs.set("108", {nom: "Arleston, Hubsch, MelanÃ¿n"});
+auteurs.set("108", {nom: "Arleston, Hubsch, Melanÿn"});
 auteurs.set("110", {nom: "Gaudin, Danard, Guillo"});
 auteurs.set("111", {nom: "Delaf, Dubuc"});
 auteurs.set("112", {nom: "Roulot, Martinage"});
