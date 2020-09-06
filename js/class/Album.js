@@ -8,7 +8,7 @@ class Album {
         this._title = album.nom;
         this._number = album.numero;
         this._serie = series.get(album.idSerie).nom;
-        this._author = auteurs.get(album.idAuteur).nom;
+        this._author = authors.get(album.idAuteur).nom;
         this._price = parseFloat(album.prix);
         this._formatedPrice = this.formatPrice(this._price);
         this._count = 1;

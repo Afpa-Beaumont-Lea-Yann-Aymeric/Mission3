@@ -1,11 +1,13 @@
 class Search {
     /**
-     *
      * @param {string} query
      */
     constructor(query = null) {
         this._query = query;
         this._selectedRow = -1;
+        this._count = 0;
+        this._matched = {series: [], albums: [], authors: []};
+        this._nbRowMax = Math.floor((window.innerHeight - 200) / 33);
     }
 
     up() {
@@ -27,43 +29,76 @@ class Search {
 
     generateSuggest() {
         $("#suggest").empty();
-        let max;
-        if(this.query.length > 1){
-            max = 0;
-        }else{
-            max = 3;
-        }
+        this._count = 0;
+        this.setMatched(["series", "albums", "authors"]);
+        this.spreadMatched();
         let html = '<table class="table table-sm w-100 mb-0">\n';
-        html += this.generateCategory("series", max);
-        html += this.generateCategory("auteurs", max);
-        html += this.generateCategory("albums", max);
+        html += this.generateCategory("series");
+        html += this.generateCategory("authors");
+        html += this.generateCategory("albums");
         $("#suggest").append(html);
+        $(".matched").hover(function(){
+            $(".matched").removeClass("table-active");
+            $(this).addClass("table-active");
+        },function(){
+            $(this).removeClass("table-active");
+        })
     }
 
-    generateCategory(category, max = 0) {
-        let categoryName = category.charAt(0).toUpperCase() + category.slice(1);
+    generateCategory(category) {
         let count = 0;
+        let categoryName = category.charAt(0).toUpperCase() + category.slice(1);
         if (categoryName === "Series") categoryName = "Séries";
         let html = '<tr class="bg-dark">\n' +
             '                        <td class="text-white">' + categoryName + '</td>\n' +
             '                    </tr>\n';
-        window[category].forEach(function (value) {
-            value.nom.split(" ").forEach(function (word) {
-                let regex = "^" + search.query.toLowerCase();
-                if (count < max || max === 0) {
-                    if (word.toLowerCase().search(regex) !== -1) {
-                        count++;
-                        html += '<tr class="matched">\n' +
-                            '                        <td>' + value.nom + '</td>\n' +
-                            '                    </tr>\n';
-                    }
-                }
-            })
+
+        this._matched[category].forEach(function (value) {
+            html += '<tr class="matched"><td>' + value + '</td></tr>\n';
+            count++;
         })
         if (count === 0) {
             return '';
         }
         return html;
+    }
+
+    /**
+     *
+     * @param {string[]} categories
+     * @returns {Object}
+     */
+    setMatched(categories) {
+        this._matched = {series: [], albums: [], authors: []};
+        categories.forEach(function (category) {
+            window[category].forEach(function (value) {
+                value.nom.split(" ").forEach(function (word) {
+                    let regex = "^" + search.query.toLowerCase();
+                    if (word.toLowerCase().search(regex) !== -1) {
+                        search._matched[category].push(value.nom);
+                    }
+                })
+            })
+        })
+    }
+
+    spreadMatched() {
+        let count = 0, spreadMatched = {series: [], albums: [], authors: []}, nbMax = 0;
+        for (let category in this._matched) {
+            if (this._matched[category].length > nbMax) {
+                nbMax = this._matched[category].length;
+            }
+        }
+        for (let i = 0; i < nbMax; i++) {
+            for (let category in this._matched) {
+                if (spreadMatched[category].length < this._matched[category].length) {
+                    spreadMatched[category].push(this._matched[category][i]);
+                    count++;
+                }
+                if (count >= this._nbRowMax) break;
+            }
+        }
+        this._matched = spreadMatched;
     }
 
     showSuggest() {

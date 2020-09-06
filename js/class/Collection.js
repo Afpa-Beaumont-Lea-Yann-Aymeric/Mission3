@@ -1,6 +1,5 @@
 class Collection {
-    /***
-     *
+    /**
      * @param {Map} albums
      * @param currentPage
      * @param itemsPerPage
