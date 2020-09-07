@@ -32,8 +32,9 @@ class Cart {
         $(".incrementItem").click(function(e){
             e.preventDefault();
             let id= $(this).parent("li").parent("ul").parent("li").attr("id");
+            
             let album = new Album(id);
-            this.addAlbum(album);
+            cart.addAlbum(album);
         })
     }
 
