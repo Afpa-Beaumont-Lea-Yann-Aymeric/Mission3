@@ -4,13 +4,14 @@ class Album {
      */
     constructor(id) {
         this._id = id;
-        let album = albums.get(id)
-        this._title = album.titre;
+        let album = albums.get(id);
+        this._title = album.nom;
         this._number = album.numero;
         this._serie = series.get(album.idSerie).nom;
-        this._author = auteurs.get(album.idAuteur).nom;
+        this._author = authors.get(album.idAuteur).nom;
         this._price = parseFloat(album.prix);
         this._formatedPrice = this.formatPrice(this._price);
+        this._count = 1;
         this._img = this.generateSrcImg(this._serie,this._number,this._title);
     }
 
@@ -28,7 +29,7 @@ class Album {
      * @return {HTMLDivElement}
      */
     generateHTMLCard(){
-        return '<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5">\n' +
+        return $('<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5" style="min-height: 1100px">\n' +
             '               <div id="'+ this._id +'" class="card border border-dark">\n' +
             '                <img class="card-img" src="' + this._img + '" alt="Card image cap">\n' +
             '                <div class="card-body">\n' +
@@ -36,10 +37,10 @@ class Album {
             '                    <p class="card-text">' + this._number + ' ' + this._title + '</p>\n' +
             '                    <p class="card-subtitle text-muted">Par ' + this._author + '</p>\n' +
             '                    <p class="card-subtitle d-flex justify-content-end">' + this._formatedPrice + ' €' + '</p>\n' +
-            '                    <button class="btn btn-primary addCart">Ajouter au panier</button>\n' +
+            '                    <button class="btn btn-primary font-weight-bold addCart">Ajouter au panier</button>\n' +
             '                </div>\n' +
             '            </div>\n' +
-            '        </div>'
+            '        </div>')
     }
 
     get title() {
@@ -106,5 +107,13 @@ class Album {
 
     set formatedPrice(value) {
         this._formatedPrice = value;
+    }
+
+    get count() {
+        return this._count;
+    }
+
+    set count(value) {
+        this._count = value;
     }
 }

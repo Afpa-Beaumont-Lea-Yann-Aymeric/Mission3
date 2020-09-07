@@ -31,6 +31,18 @@ body{
     height:15%;
 }
 
+.rounded-xl {
+    border-radius: 0.5rem;
+}
+
+.rounded-xxl {
+    border-radius: 1rem;
+}
+
+.matched{
+    cursor:pointer;
+}
+
 /* sm */
 @media (max-width: 576px) {
     .card-body{
@@ -53,6 +65,9 @@ body{
 
     .card-body{
         font-size: 1.7vw;
+    }
+    #content{
+        width:calc(100% - 200px);
     }
 }
 
