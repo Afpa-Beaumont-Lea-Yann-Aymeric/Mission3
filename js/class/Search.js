@@ -37,10 +37,10 @@ class Search {
         html += this.generateCategory("authors");
         html += this.generateCategory("albums");
         $("#suggest").append(html);
-        $(".matched").hover(function(){
+        $(".matched").hover(function () {
             $(".matched").removeClass("table-active");
             $(this).addClass("table-active");
-        },function(){
+        }, function () {
             $(this).removeClass("table-active");
         })
     }
@@ -72,12 +72,10 @@ class Search {
         this._matched = {series: [], albums: [], authors: []};
         categories.forEach(function (category) {
             window[category].forEach(function (value) {
-                value.nom.split(" ").forEach(function (word) {
-                    let regex = "^" + search.query.toLowerCase();
-                    if (word.toLowerCase().search(regex) !== -1) {
-                        search._matched[category].push(value.nom);
-                    }
-                })
+                let regex = "^" + search.query.toLowerCase();
+                if (value.nom.toLowerCase().search(regex) !== -1) {
+                    search._matched[category].push(value.nom);
+                }
             })
         })
     }
@@ -90,15 +88,19 @@ class Search {
             }
         }
         for (let i = 0; i < nbMax; i++) {
+            if (count >= this._nbRowMax) break;
             for (let category in this._matched) {
+                console.log(category);
                 if (spreadMatched[category].length < this._matched[category].length) {
                     spreadMatched[category].push(this._matched[category][i]);
                     count++;
                 }
-                if (count >= this._nbRowMax) break;
             }
         }
+        console.log(this._matched);
         this._matched = spreadMatched;
+        console.log(this._matched);
+        console.log(this._nbRowMax);
     }
 
     showSuggest() {
