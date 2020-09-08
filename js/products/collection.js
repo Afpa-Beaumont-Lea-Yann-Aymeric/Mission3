@@ -5,9 +5,9 @@ albums = new Map(Array.from(albums).sort(dynamicSort("nom")));
 authors = new Map(Array.from(authors).sort(dynamicSort("nom")));
 // sort the series by name
 series = new Map(Array.from(series).sort(dynamicSort("nom")));
-let pagination = new Pagination(albums.size, 12);
+
 let collection = new Collection(albums);
-let filters = new Filters(authors, series);
+let pagination = new Pagination(albums.size, 12);
 let search = new Search();
 
 /**
@@ -41,7 +41,6 @@ function decrementItem(id) {
 }
 
 $(document).ready(function () {
-    filters.generateHtml();
     collection.showAlbums();
     pagination.generateHtml();
 

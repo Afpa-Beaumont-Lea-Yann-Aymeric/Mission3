@@ -1,22 +1,38 @@
 class Collection {
     /**
-     * @param {Map} albums
+     * @param {Map} albumsMap
      * @param currentPage
      * @param itemsPerPage
      */
-    constructor(albums) {
+    constructor(albumsMap) {
+        let albums = [];
+        albumsMap.forEach(function (item, key) {
+                let album = new Album(key);
+                albums.push(album);
+        })
         this._albums = albums;
+        this._albumsMatched = albums;
+    }
+
+    setAlbums() {
+
     }
 
     showAlbums() {
         $("#collection").empty();
+        pagination.nbItems = this.albumsMatched.length;
+        pagination.nbPages = Math.ceil(pagination.nbItems / pagination.itemsPerPage);
+        pagination.generateHtml();
         let start = pagination.currentPage * pagination.itemsPerPage - pagination.itemsPerPage;
         let end = pagination.currentPage * pagination.itemsPerPage;
-        let albumsToShow = mapToArray(this._albums).slice(start,end);
+        console.log(pagination.currentPage,start, end);
+        let albumsToShow = this._albumsMatched.slice(start, end);
+
         albumsToShow.forEach(function (album) {
-            let card = new Album(album.key).generateHTMLCard();
+            let card = new Album(album.id).generateHTMLCard();
             $("#collection").append(card);
         })
+
         $(".addCart").click(function () {
             let id = $(this).parent(".card-body").parent(".card").attr("id");
             let album = new Album(id);
@@ -33,6 +49,14 @@ class Collection {
         this._albums = value;
     }
 
+
+    get albumsMatched() {
+        return this._albumsMatched;
+    }
+
+    set albumsMatched(value) {
+        this._albumsMatched = value;
+    }
 
     get currentPage() {
         return this._currentPage;

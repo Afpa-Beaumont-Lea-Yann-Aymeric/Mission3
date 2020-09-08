@@ -29,7 +29,7 @@ class Album {
      * @return {HTMLDivElement}
      */
     generateHTMLCard(){
-        return $('<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5" style="min-height: 1100px">\n' +
+        return $('<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5">\n' +
             '               <div id="'+ this._id +'" class="card border border-dark">\n' +
             '                <img class="card-img" src="' + this._img + '" alt="Card image cap">\n' +
             '                <div class="card-body">\n' +

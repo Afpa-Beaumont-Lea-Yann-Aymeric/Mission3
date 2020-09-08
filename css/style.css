@@ -44,7 +44,7 @@ body{
 
 }
 
-/* sm */
+/* xs */
 @media (max-width: 576px) {
     .card-body{
         font-size:5.5vw;
@@ -67,6 +67,7 @@ body{
     .card-body{
         font-size: 1.7vw;
     }
+
     #content{
         width:calc(100% - 200px);
     }

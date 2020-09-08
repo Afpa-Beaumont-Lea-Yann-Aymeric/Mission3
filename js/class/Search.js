@@ -39,10 +39,31 @@ class Search {
         $("#matched" + newId).addClass("table-active");
     }
 
-    selectSuggest(){
-        let suggestSelected = $(".matched.table-actve").children("td");
-        console.log(suggestSelected);
-        $("#search").val(suggestSelected);
+    selectSuggest() {
+        let suggestSelected = $(".table-active").children("td").text();
+        if (suggestSelected !== "") {
+            this._query = suggestSelected;
+        }
+        $("#search").val(this._query).focus();
+        $("#suggest").hide();
+        this.launchSearch();
+    }
+
+    launchSearch() {
+        let albumsMatched = [];
+        let propertyToMatched = ["_title", "_serie", "_author"]
+        collection._albums.forEach(function (item, key) {
+                let matched = false;
+                propertyToMatched.forEach(function (property) {
+                    if (item[property].search(search.query) !== -1) {
+                        matched = true;
+                    }
+                })
+                if (matched) albumsMatched.push(item);
+            }
+        )
+        collection.albumsMatched = albumsMatched;
+        collection.showAlbums();
     }
 
     generateSuggest() {
@@ -54,6 +75,7 @@ class Search {
         html += this.generateCategory("series");
         html += this.generateCategory("authors");
         html += this.generateCategory("albums");
+
         $("#suggest").append(html);
         $(".matched").hover(function () {
             $(".matched").removeClass("table-active");
@@ -61,18 +83,33 @@ class Search {
         }, function () {
             $(this).removeClass("table-active");
         })
+
+        $(".matched").click(function () {
+            search.selectSuggest();
+        })
     }
 
     generateCategory(category) {
-        let count = 0;
-        let categoryName = category.charAt(0).toUpperCase() + category.slice(1);
-        if (categoryName === "Series") categoryName = "Séries";
+        console.log(this._matched);
+        let count = 0, categoryName;
+        switch (category) {
+            case "series":
+                categoryName = "Séries";
+                break;
+            case "authors":
+                categoryName = "Auteurs";
+                break;
+            case "albums":
+                categoryName = "Albums";
+
+        }
+
         let html = '<tr class="bg-dark">\n' +
             '                        <td class="text-white">' + categoryName + '</td>\n' +
             '                    </tr>\n';
 
         this._matched[category].forEach(function (value) {
-            html += '<tr id="matched' + search._count + '" class="matched"><td>' + value + '</td></tr>\n';
+            html += '<tr id="matched' + search._count + '" class="matched"><td>' + value.nom + '</td></tr>\n';
             count++;
             search._count++;
         })
@@ -83,7 +120,6 @@ class Search {
     }
 
     /**
-     *
      * @param {string[]} categories
      * @returns {Object}
      */
@@ -92,8 +128,9 @@ class Search {
         categories.forEach(function (category) {
             window[category].forEach(function (value) {
                 let regex = "^" + search.query.toLowerCase();
+                console.log(value.nom);
                 if (value.nom.toLowerCase().search(regex) !== -1) {
-                    search._matched[category].push(value.nom);
+                    search._matched[category].push(value);
                 }
             })
         })
