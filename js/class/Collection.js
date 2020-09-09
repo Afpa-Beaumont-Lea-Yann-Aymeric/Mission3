@@ -1,8 +1,6 @@
 class Collection {
     /**
      * @param {Map} albumsMap
-     * @param currentPage
-     * @param itemsPerPage
      */
     constructor(albumsMap) {
         let albums = [];
@@ -25,7 +23,6 @@ class Collection {
         pagination.generateHtml();
         let start = pagination.currentPage * pagination.itemsPerPage - pagination.itemsPerPage;
         let end = pagination.currentPage * pagination.itemsPerPage;
-        console.log(pagination.currentPage,start, end);
         let albumsToShow = this._albumsMatched.slice(start, end);
 
         albumsToShow.forEach(function (album) {

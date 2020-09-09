@@ -499,7 +499,7 @@ albums.set("577", {nom: "L'exode de kalandre", numero: "17", idSerie: "87", idAu
 albums.set("578", {nom: "L'intégrale", numero: "00", idSerie: "108", idAuteur: "150", prix: "12.65"});
 albums.set("579", {nom: "Catharsis", numero: "01", idSerie: "57", idAuteur: "151", prix: "12.65"});
 albums.set("580", {nom: "Bienvenue en adolescence", numero: "14", idSerie: "23", idAuteur: "19", prix: "12.65"});
-albums.set("581", {nom: "Astérix, le papyrus de César", numero: "36", idSerie: "32", idAuteur: "35", prix: "12.65"});
+albums.set("581", {nom: "Astérix, le papyrusa de César", numero: "36", idSerie: "32", idAuteur: "35", prix: "12.65"});
 albums.set("582", {nom: "Tout le monde te regarde", numero: "17", idSerie: "5", idAuteur: "14", prix: "12.64"});
 albums.set("583", {nom: "La troisième mort de l'empereur", numero: "05", idSerie: "86", idAuteur: "127", prix: "12.64"});
 albums.set("584", {nom: "Soeurs de sang", numero: "14", idSerie: "13", idAuteur: "8", prix: "12.64"});

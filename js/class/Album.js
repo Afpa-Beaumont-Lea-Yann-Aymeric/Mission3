@@ -1,6 +1,6 @@
 class Album {
     /**
-     * @param album
+     * @param {string} id
      */
     constructor(id) {
         this._id = id;
