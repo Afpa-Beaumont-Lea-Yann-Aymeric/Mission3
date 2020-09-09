@@ -1,5 +1,8 @@
+
+
+throw '';
+
 let database = new Database(albums, authors, series);
-console.log(database);
 
 let collection = new Collection(albums);
 
@@ -14,11 +17,6 @@ series = new Map(Array.from(series).sort(dynamicSort("nom")));
 let pagination = new Pagination(albums.size, 12);
 let search = new Search();
 
-$("#search").keyup(function(e){
-console.log(e.code);
-})
-
-throw 'stop';
 /**
  * Sort an array of Object by the property<br>
  * If there is "-" before the property, array sort by order descendant, otherwise array sort by order ascendant

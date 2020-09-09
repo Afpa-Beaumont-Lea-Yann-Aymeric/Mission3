@@ -2,18 +2,8 @@ class Collection {
     /**
      * @param {Map} albumsMap
      */
-    constructor(albumsMap) {
-        let albums = [];
-        albumsMap.forEach(function (item, key) {
-                let album = new Album(key);
-                albums.push(album);
-        })
-        this._albums = albums;
-        this._albumsMatched = albums;
-    }
-
-    setAlbums() {
-
+    constructor(albumsToShow) {
+        this._albumsToShow = albums;
     }
 
     showAlbums() {

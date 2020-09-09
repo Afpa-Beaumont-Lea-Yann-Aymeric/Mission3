@@ -3,12 +3,15 @@
  */
 
 class Database {
+    #albums;
+    #series;
+    #authors;
+
     /**
-     * @param {Map[]} albumsMap
-     * @param {Map[]} authorsMap
-     * @param {Map[]} seriesMap
+     *
+     * @param albumsMap
      */
-    constructor(albumsMap, authorsMap, seriesMap) {
+    constructor(albumsMap) {
         let albums = [];
         let authors = {};
         let series = {};
@@ -22,16 +25,28 @@ class Database {
                 series[album.serie].push(album);
             }
 
-            album.author.split(", ").forEach(function(author,key){
-                if(typeof authors[author] === "undefined"){
+            album.author.split(", ").forEach(function (author, key) {
+                if (typeof authors[author] === "undefined") {
                     authors[author] = [album];
-                }else{
+                } else {
                     authors[author].push(album);
                 }
             })
         })
-        this._series = series;
-        this._albums = albums;
-        this._athors = authors;
+        this.#series = series;
+        this.#albums = albums;
+        this.#authors = authors;
+    }
+
+    getSeries() {
+        return this.#series;
+    }
+
+    getAlbums(){
+        return this.#albums;
+    }
+
+    getAuthors(){
+        return this.#authors;
     }
 }

@@ -28,7 +28,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e5dd3e84-06e4-41ef-9d80-e64d2c228db5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Database.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/products/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/products/collection.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,6 +54,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -74,6 +77,7 @@
       <updated>1599147475231</updated>
       <workItem from="1599147477007" duration="1399000" />
       <workItem from="1599155294305" duration="17272000" />
+      <workItem from="1599667452662" duration="8386000" />
     </task>
     <servers />
   </component>
@@ -102,16 +106,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2625" y="356" width="571" height="403" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599147595816">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2625" y="356" width="571" height="403" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599147595816" />
-    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1599193747109">
+    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1599676465738">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599193747109" />
+    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599676465738" />
     <state width="1802" height="340" key="GridCell.Tab.0.bottom" timestamp="1599161709467">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
@@ -176,6 +181,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1802" height="340" key="GridCell.Tab.3.right/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599161709468" />
+    <state x="2369" y="189" width="1022" height="737" key="SettingsEditor" timestamp="1599681231695">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2369" y="189" width="1022" height="737" key="SettingsEditor/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599681231695" />
     <state x="2607" y="162" width="618" height="783" key="find.popup" timestamp="1599155533261">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
