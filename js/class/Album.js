@@ -1,18 +1,28 @@
 class Album {
+    #id;
+    #name;
+    #number;
+    #serie;
+    #authors;
+    #price;
+    #formatedPrice;
+    #count;
+    #img;
     /**
      * @param {string} id
      */
     constructor(id) {
-        this._id = id;
+        this.#id = id;
         let album = albums.get(id);
-        this._title = album.nom;
-        this._number = album.numero;
-        this._serie = series.get(album.idSerie).nom;
-        this._author = authors.get(album.idAuteur).nom;
-        this._price = parseFloat(album.prix);
-        this._formatedPrice = this.formatPrice(this._price);
-        this._count = 1;
-        this._img = this.generateSrcImg(this._serie,this._number,this._title);
+        this.#name = album.name;
+        this.#number = album.number;
+        this.#serie = series.get(album.idSerie).name;
+        this.#authors = authors.get(album.idAuthor).name;
+        this.#price = parseFloat(album.price);
+        this.#formatedPrice = this.formatPrice(this.#price);
+        this.#count = 1;
+        this.#img = this.generateSrcImg(this.#serie,this.#number,this.#name);
+        this._id = id;
     }
 
     formatPrice(price) {
@@ -43,53 +53,8 @@ class Album {
             '        </div>')
     }
 
-    get title() {
-        return this._title;
-    }
-
-    set title(value) {
-        this._title = value;
-    }
-
-    get serie() {
-        return this._serie;
-    }
-
-    set serie(value) {
-        this._serie = value;
-    }
-
-    get author() {
-        return this._author;
-    }
-
-    set author(value) {
-        this._author = value;
-    }
-
-    get price() {
-        return this._price;
-    }
-
-    set price(value) {
-        this._price = value;
-    }
-
-    get img() {
-        return this._img;
-    }
-
-    set img(value) {
-        this._img = value;
-    }
-
-
-    get number() {
-        return this._number;
-    }
-
-    set number(value) {
-        this._number = value;
+    get name(){
+        return this.#name;
     }
 
 
@@ -97,23 +62,31 @@ class Album {
         return this._id;
     }
 
-    set id(value) {
-        this._id = value;
+    get number() {
+        return this.#number;
+    }
+
+    get serie() {
+        return this.#serie;
+    }
+
+    get authors() {
+        return this.#authors;
+    }
+
+    get price() {
+        return this.#price;
     }
 
     get formatedPrice() {
-        return this._formatedPrice;
-    }
-
-    set formatedPrice(value) {
-        this._formatedPrice = value;
+        return this.#formatedPrice;
     }
 
     get count() {
-        return this._count;
+        return this.#count;
     }
 
-    set count(value) {
-        this._count = value;
+    get img() {
+        return this.#img;
     }
 }

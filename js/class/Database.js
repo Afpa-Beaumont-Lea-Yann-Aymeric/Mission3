@@ -3,35 +3,46 @@
  */
 
 class Database {
+    #albums;
+    #series;
+    #authors;
+
     /**
-     * @param {Map[]} albumsMap
-     * @param {Map[]} authorsMap
-     * @param {Map[]} seriesMap
+     * @param albumsMap
      */
-    constructor(albumsMap, authorsMap, seriesMap) {
+    constructor(albumsMap) {
         let albums = [];
-        let authors = {};
-        let series = {};
+        let authors = [];
+        let series = [];
+
         albumsMap.forEach(function (item, key) {
             let album = new Album(key);
             albums.push(album);
 
-            if (typeof series[album.serie] === "undefined") {
-                series[album.serie] = [album];
-            } else {
-                series[album.serie].push(album);
-            }
 
-            album.author.split(", ").forEach(function(author,key){
-                if(typeof authors[author] === "undefined"){
-                    authors[author] = [album];
-                }else{
-                    authors[author].push(album);
-                }
-            })
         })
-        this._series = series;
-        this._albums = albums;
-        this._athors = authors;
+
+        authors.sort(this.dynamicSort(""));
+
+
+
+    }
+
+    /**
+     * Sort an array of Object by the property<br>
+     * If there is "-" before the property, array sort by order descendant, otherwise array sort by order ascendant
+     * @param {string} property
+     * @return {function(*, *): number}
+     */
+    dynamicSort(property) {
+        let sortOrder = 1;
+        if (property[0] === "-") {
+            sortOrder = -1;
+            property = property.substr(1);
+        }
+        return function (a, b) {
+            let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+            return result * sortOrder;
+        }
     }
 }

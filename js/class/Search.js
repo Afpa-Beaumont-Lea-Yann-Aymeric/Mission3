@@ -90,7 +90,6 @@ class Search {
     }
 
     generateCategory(category) {
-        console.log(this._matched);
         let count = 0, categoryName;
         switch (category) {
             case "series":
@@ -128,7 +127,6 @@ class Search {
         categories.forEach(function (category) {
             window[category].forEach(function (value) {
                 let regex = "^" + search.query.toLowerCase();
-                console.log(value.nom);
                 if (value.nom.toLowerCase().search(regex) !== -1) {
                     search._matched[category].push(value);
                 }
