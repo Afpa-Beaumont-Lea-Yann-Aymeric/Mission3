@@ -9,44 +9,59 @@ class Database {
 
     /**
      *
-     * @param albumsMap
+     * @param {Map} albumsMap
+     * @param {Map} seriesMap
+     * @param {Map} authorsMap
      */
-    constructor(albumsMap) {
+    constructor(albumsMap, seriesMap, authorsMap) {
         let albums = [];
-        let authors = {};
-        let series = {};
+        let authors = [];
+        let series = [];
         albumsMap.forEach(function (item, key) {
             let album = new Album(key);
             albums.push(album);
 
-            if (typeof series[album.serie] === "undefined") {
-                series[album.serie] = [album];
+            let idSerie = item.idSerie;
+            let serie = series.find(x => x.id === idSerie);
+            if (typeof serie !== "undefined") {
+                serie.addAlbum(album);
             } else {
-                series[album.serie].push(album);
+                serie = new Serie(idSerie, seriesMap.get(idSerie).name, [album]);
+                series.push(serie);
             }
 
-            album.author.split(", ").forEach(function (author, key) {
-                if (typeof authors[author] === "undefined") {
-                    authors[author] = [album];
+            let idAuthor = item.idAuthor;
+            let authorsName = authorsMap.get(idAuthor).name.split(", ");
+            authorsName.forEach(function (authorName) {
+                let author = authors.find(x => x.name === authorName);
+                if (typeof author !== "undefined") {
+                    author.addAlbum(album);
                 } else {
-                    authors[author].push(album);
+                    author = new Author(authorName, [album]);
+                    authors.push(author);
                 }
             })
         })
-        this.#series = series;
         this.#albums = albums;
+        this.#series = series;
         this.#authors = authors;
+        this.#albums.sort(dynamicSort("name"));
+        this.#series.sort(dynamicSort("name"));
+        this.#authors.sort(dynamicSort("name"));
+        console.log(this.#albums);
+        console.log(this.#series);
+        console.log(this.#authors);
     }
 
-    getSeries() {
+    get series() {
         return this.#series;
     }
 
-    getAlbums(){
+    get albums() {
         return this.#albums;
     }
 
-    getAuthors(){
+    get authors() {
         return this.#authors;
     }
 }

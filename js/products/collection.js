@@ -1,39 +1,13 @@
+let database = new Database(albums, series, authors);
 
-
-throw '';
-
-let database = new Database(albums, authors, series);
-
-let collection = new Collection(albums);
-
-let cart = new Cart(0, [], 0);
-// sort  the albums by name;
-albums = new Map(Array.from(albums).sort(dynamicSort("nom")));
-// sort the authors by name;
-authors = new Map(Array.from(authors).sort(dynamicSort("nom")));
-// sort the series by name
-series = new Map(Array.from(series).sort(dynamicSort("nom")));
-
-let pagination = new Pagination(albums.size, 12);
 let search = new Search();
 
-/**
- * Sort an array of Object by the property<br>
- * If there is "-" before the property, array sort by order descendant, otherwise array sort by order ascendant
- * @param {string} property
- * @return {function(*, *): number}
- */
-function dynamicSort(property) {
-    let sortOrder = 1;
-    if (property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a, b) {
-        let result = (a[1][property] < b[1][property]) ? -1 : (a[1][property] > b[1][property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-}
+let collection = new Collection(database.albums);
+
+let pagination = new Pagination(collection.albumsToShow, 12);
+
+let cart = new Cart(0, [], 0);
+
 
 function incrementItem(id) {
     let album = new Album(id);
@@ -73,6 +47,7 @@ $(document).ready(function () {
             default:
                 if (e.key.length === 1) value = $(this).val() + e.key;
                 search.query = value;
+                console.log(search.query);
                 search.showSuggest();
                 search.generateSuggest();
         }

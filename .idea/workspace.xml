@@ -27,10 +27,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5dd3e84-06e4-41ef-9d80-e64d2c228db5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/authors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/class/Author.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/class/Serie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/albums.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/albums.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/auteurs.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/series.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Album.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Cart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Collection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/helpers/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/products/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/products/collection.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +51,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,7 +95,8 @@
       <updated>1599147475231</updated>
       <workItem from="1599147477007" duration="1399000" />
       <workItem from="1599155294305" duration="17272000" />
-      <workItem from="1599667452662" duration="8386000" />
+      <workItem from="1599667452662" duration="12942000" />
+      <workItem from="1599877939741" duration="17442000" />
     </task>
     <servers />
   </component>

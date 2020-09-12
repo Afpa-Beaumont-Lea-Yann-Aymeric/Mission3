@@ -1,17 +1,19 @@
 class Cart {
+    #nbAlbums;
+    #albums;
+    #totalToPay;
     /**
      * @param {integer} numberAlbums
      * @param {Album[]} albums
      * @param {number} totalToPay
      */
     constructor(nbAlbums, albums, totalToPay,) {
-        this._nbAlbums = albums.length;
-        this._albums = albums;
-        this._totalToPay = totalToPay;
+        this.#nbAlbums = albums.length;
+        this.#albums = albums;
+        this.#totalToPay = totalToPay;
     }
 
     /**
-     *
      * @param {Album} album
      * @returns {string}
      */
@@ -30,19 +32,19 @@ class Cart {
     }
 
     /**
-     * Calcul the number of albums in the cart and set the value in this._nbAlbums
+     * Calcul the number of albums in the cart and set the value in this.#nbAlbums
      * @returns void
      */
     calculNbAlbums() {
         let count = 0
-        this._albums.forEach(function (album) {
+        this.#albums.forEach(function (album) {
             count += album.count;
         })
-        this._nbAlbums = count;
+        this.#nbAlbums = count;
     }
 
     /**
-     * Calcul the total amount in the cart and set the value in this._totalToPay
+     * Calcul the total amount in the cart and set the value in this.#totalToPay
      * @returns void
      */
     calculTotalToPay() {
@@ -50,7 +52,7 @@ class Cart {
         this.albums.forEach(function (album) {
             total += album.price * album.count;
         })
-        this._totalToPay = total;
+        this.#totalToPay = total;
     }
 
     /**
@@ -60,7 +62,7 @@ class Cart {
      */
     getPriceItem(id) {
         let count = 0
-        this._albums.forEach(function (album) {
+        this.#albums.forEach(function (album) {
             if (album.id === id) count += album.price;
         })
         return count;
@@ -68,33 +70,33 @@ class Cart {
 
     updateHtml() {
         $("#cart-body .list-group").empty();
-        this._albums.forEach(function (album) {
+        this.#albums.forEach(function (album) {
             $("#cart-body .list-group").append(cart.generateItem(album));
         })
         cart.calculTotalToPay();
         cart.calculNbAlbums();
-        $("#totalToPay").text(this.formatPrice(this._totalToPay));
-        $(".badge.badge-warning").text(this._nbAlbums);
+        $("#totalToPay").text(this.formatPrice(this.#totalToPay));
+        $(".badge.badge-warning").text(this.#nbAlbums);
     }
 
     /**
      * If an album with same id is already in the cart, increment the count of 1
-     * Else, push the album in this._albums
+     * Else, push the album in this.#albums
      * @param {Album} album - The album to add to cart
      */
     addAlbum(album) {
         let contain = false
-        this._albums.map(function (value) {
+        this.#albums.map(function (value) {
             if (value.id === album.id) {
                 value.count++;
                 contain = true;
             }
         })
-        if (!contain) this._albums.push(album);
+        if (!contain) this.#albums.push(album);
     }
 
     removeAlbum(album) {
-        this._albums.forEach(function (value, key, albums) {
+        this.#albums.forEach(function (value, key, albums) {
             if (value.id === album.id) value.count--;
             if(value.count === 0) albums.splice(key, 1);
         })
@@ -105,26 +107,26 @@ class Cart {
     }
 
     get nbAlbums() {
-        return this._nbAlbums;
+        return this.#nbAlbums;
     }
 
     set nbAlbums(value) {
-        this._nbAlbums = value;
+        this.#nbAlbums = value;
     }
 
     get albums() {
-        return this._albums;
+        return this.#albums;
     }
 
     set albums(value) {
-        this._albums = value;
+        this.#albums = value;
     }
 
     get totalToPay() {
-        return this._totalToPay;
+        return this.#totalToPay;
     }
 
     set totalToPay(value) {
-        this._totalToPay = value;
+        this.#totalToPay = value;
     }
 }

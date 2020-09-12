@@ -1,13 +1,17 @@
 class Pagination {
+    #itemsPerPage;
+    #nbItems;
+    #nbPages;
+    #currentPage;
     /**
-     * @param {Map} albums
-     * @param {number} itemsPerPage
+     * @param {integer} nbItems
+     * @param {integer} itemsPerPage
      */
     constructor(nbItems, itemsPerPage) {
-        this._itemsPerPage = itemsPerPage;
-        this._nbItems = nbItems;
-        this._nbPages = Math.ceil(nbItems / itemsPerPage);
-        this._currentPage = 1;
+        this.#itemsPerPage = itemsPerPage;
+        this.#nbItems = nbItems;
+        this.#nbPages = Math.ceil(nbItems / itemsPerPage);
+        this.#currentPage = 1;
     }
 
     generateLi(value, disabled = false) {
@@ -19,19 +23,19 @@ class Pagination {
         } else {
             text = value;
         }
-        return '<li class="page-item ' + (this._currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a class="page-link text-center" href="javascript:pagination.changePage(&quot;' + value + '&quot;)" style="width:44px">' + text + '</a></li>\n'
+        return '<li class="page-item ' + (this.#currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a class="page-link text-center" href="javascript:pagination.changePage(&quot;' + value + '&quot;)" style="width:44px">' + text + '</a></li>\n'
     }
 
     changePage(page) {
         if (page === "-") {
-            this._currentPage--;
+            this.#currentPage--;
         } else if (page === "+") {
-            this._currentPage++;
+            this.#currentPage++;
         } else {
-            this._currentPage = parseInt(page);
+            this.#currentPage = parseInt(page);
         }
-        if (this._currentPage < 1) this._currentPage = 1;
-        if (this._currentPage > this._nbItems) this._currentPage = this._nbItems;
+        if (this.#currentPage < 1) this.#currentPage = 1;
+        if (this.#currentPage > this.#nbItems) this.#currentPage = this.#nbItems;
 
         this.generateHtml();
         collection.showAlbums();
@@ -39,69 +43,69 @@ class Pagination {
 
     generateHtml() {
         $(".pagination").empty();
-        if (this._nbPages <= 1) {
+        if (this.#nbPages <= 1) {
             return null;
         }
         let rangeStart, rangeEnd;
-        if (this._nbPages <= 9) {
+        if (this.#nbPages <= 9) {
             rangeStart = 1;
-            rangeEnd = this._nbPages;
+            rangeEnd = this.#nbPages;
         } else {
-            rangeStart = this._currentPage - 2;
-            rangeEnd = this._currentPage + 2;
-            if (this._currentPage <= 5) {
+            rangeStart = this.#currentPage - 2;
+            rangeEnd = this.#currentPage + 2;
+            if (this.#currentPage <= 5) {
                 rangeStart = 1;
                 rangeEnd = 7;
-            } else if (this._currentPage >= this._nbPages - 4) {
-                rangeStart = this._nbPages - 6;
-                rangeEnd = this._nbPages;
+            } else if (this.#currentPage >= this.#nbPages - 4) {
+                rangeStart = this.#nbPages - 6;
+                rangeEnd = this.#nbPages;
             }
         }
-        let html = this.generateLi("-", this._currentPage === 1);
-        if (this._currentPage >= 6 && this._nbPages > 9) {
+        let html = this.generateLi("-", this.#currentPage === 1);
+        if (this.#currentPage >= 6 && this.#nbPages > 9) {
             html += this.generateLi(1);
             html += this.generateLi("...", true);
         }
         for (let i = rangeStart; i <= rangeEnd; i++) {
             html += this.generateLi(i);
         }
-        if (this._currentPage <= this._nbPages - 5 && this._nbPages > 9) {
+        if (this.#currentPage <= this.#nbPages - 5 && this.#nbPages > 9) {
             html += this.generateLi("...", true);
-            html += this.generateLi(this._nbPages, this._currentPage === this._nbPages);
+            html += this.generateLi(this.#nbPages, this.#currentPage === this.#nbPages);
         }
-        html += this.generateLi("+", this._currentPage >= this._nbPages);
+        html += this.generateLi("+", this.#currentPage >= this.#nbPages);
         $(".pagination").append(html);
     }
 
     get itemsPerPage() {
-        return this._itemsPerPage;
+        return this.#itemsPerPage;
     }
 
     set itemsPerPage(value) {
-        this._itemsPerPage = value;
+        this.#itemsPerPage = value;
     }
 
     get nbItems() {
-        return this._nbItems;
+        return this.#nbItems;
     }
 
     set nbItems(value) {
-        this._nbItems = value;
+        this.#nbItems = value;
     }
 
     get nbPages() {
-        return this._nbPages;
+        return this.#nbPages;
     }
 
     set nbPages(value) {
-        this._nbPages = value;
+        this.#nbPages = value;
     }
 
     get currentPage() {
-        return this._currentPage;
+        return this.#currentPage;
     }
 
     set currentPage(value) {
-        this._currentPage = value;
+        this.#currentPage = value;
     }
 }

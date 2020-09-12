@@ -1,13 +1,18 @@
 class Search {
+    #query;
+    #selectedRow;
+    #count;
+    #matched;
+    #nbRowMax;
     /**
      * @param {string} query
      */
-    constructor(query = null) {
-        this._query = query;
-        this._selectedRow = -1;
-        this._count = 0;
-        this._matched = {series: [], albums: [], authors: []};
-        this._nbRowMax = Math.floor((window.innerHeight - 200) / 33);
+    constructor(query = '') {
+        this.#query = query;
+        this.#selectedRow = -1;
+        this.#count = 0;
+        this.#matched = {series: [], albums: [], authors: []};
+        this.#nbRowMax = Math.floor((window.innerHeight - 200) / 33);
     }
 
     up() {
@@ -42,17 +47,17 @@ class Search {
     selectSuggest() {
         let suggestSelected = $(".table-active").children("td").text();
         if (suggestSelected !== "") {
-            this._query = suggestSelected;
+            this.#query = suggestSelected;
         }
-        $("#search").val(this._query).focus();
+        $("#search").val(this.#query).focus();
         $("#suggest").hide();
         this.launchSearch();
     }
 
     launchSearch() {
         let albumsMatched = [];
-        let propertyToMatched = ["_title", "_serie", "_author"]
-        collection._albums.forEach(function (item, key) {
+        let propertyToMatched = ["#title", "#serie", "#author"]
+        collection.albumsToShow.forEach(function (item, key) {
                 let matched = false;
                 propertyToMatched.forEach(function (property) {
                     if (item[property].search(search.query) !== -1) {
@@ -68,7 +73,7 @@ class Search {
 
     generateSuggest() {
         $("#suggest").empty();
-        this._count = 0;
+        this.#count = 0;
         this.setMatched(["series", "albums", "authors"]);
         this.spreadMatched();
         let html = '<table class="table table-sm w-100 mb-0">\n';
@@ -90,7 +95,6 @@ class Search {
     }
 
     generateCategory(category) {
-        console.log(this._matched);
         let count = 0, categoryName;
         switch (category) {
             case "series":
@@ -108,10 +112,10 @@ class Search {
             '                        <td class="text-white">' + categoryName + '</td>\n' +
             '                    </tr>\n';
 
-        this._matched[category].forEach(function (value) {
-            html += '<tr id="matched' + search._count + '" class="matched"><td>' + value.nom + '</td></tr>\n';
+        this.#matched[category].forEach(function (value) {
+            html += '<tr id="matched' + search.#count + '" class="matched"><td>' + value.nom + '</td></tr>\n';
             count++;
-            search._count++;
+            search.#count++;
         })
         if (count === 0) {
             return '';
@@ -124,13 +128,12 @@ class Search {
      * @returns {Object}
      */
     setMatched(categories) {
-        this._matched = {series: [], albums: [], authors: []};
+        this.#matched = {series: [], albums: [], authors: []};
         categories.forEach(function (category) {
             window[category].forEach(function (value) {
                 let regex = "^" + search.query.toLowerCase();
-                console.log(value.nom);
-                if (value.nom.toLowerCase().search(regex) !== -1) {
-                    search._matched[category].push(value);
+                if (value.name.toLowerCase().search(regex) !== -1) {
+                    search.#matched[category].push(value);
                 }
             })
         })
@@ -138,25 +141,25 @@ class Search {
 
     spreadMatched() {
         let count = 0, spreadMatched = {series: [], albums: [], authors: []}, nbMax = 0;
-        for (let category in this._matched) {
-            if (this._matched[category].length > nbMax) {
-                nbMax = this._matched[category].length;
+        for (let category in this.#matched) {
+            if (this.#matched[category].length > nbMax) {
+                nbMax = this.#matched[category].length;
             }
         }
         for (let i = 0; i < nbMax; i++) {
-            if (count >= this._nbRowMax) break;
-            for (let category in this._matched) {
-                if (spreadMatched[category].length < this._matched[category].length) {
-                    spreadMatched[category].push(this._matched[category][i]);
+            if (count >= this.#nbRowMax) break;
+            for (let category in this.#matched) {
+                if (spreadMatched[category].length < this.#matched[category].length) {
+                    spreadMatched[category].push(this.#matched[category][i]);
                     count++;
                 }
             }
         }
-        this._matched = spreadMatched;
+        this.#matched = spreadMatched;
     }
 
     showSuggest() {
-        if (this._query === "") {
+        if (this.#query === "") {
             $("#suggest").hide();
         } else {
             $("#suggest").show();
@@ -164,27 +167,27 @@ class Search {
     }
 
     get query() {
-        return this._query;
+        return this.#query;
     }
 
     set query(value) {
-        this._query = value;
+        this.#query = value;
     }
 
     get selectedRow() {
-        return this._selectedRow;
+        return this.#selectedRow;
     }
 
     set selectedRow(value) {
-        this._selectedRow = value;
+        this.#selectedRow = value;
     }
 
 
     get count() {
-        return this._count;
+        return this.#count;
     }
 
     set count(value) {
-        this._count = value;
+        this.#count = value;
     }
 }

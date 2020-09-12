@@ -1,18 +1,27 @@
 class Album {
+    #id;
+    #name;
+    #number;
+    #serie;
+    #author;
+    #price;
+    #formatedPrice;
+    #count;
+    #img;
     /**
      * @param {string} id
      */
     constructor(id) {
-        this._id = id;
+        this.#id = id;
         let album = albums.get(id);
-        this._title = album.nom;
-        this._number = album.numero;
-        this._serie = series.get(album.idSerie).nom;
-        this._author = authors.get(album.idAuteur).nom;
-        this._price = parseFloat(album.prix);
-        this._formatedPrice = this.formatPrice(this._price);
-        this._count = 1;
-        this._img = this.generateSrcImg(this._serie,this._number,this._title);
+        this.#name = album.name;
+        this.#number = album.number;
+        this.#serie = series.get(album.idSerie).name;
+        this.#author = authors.get(album.idAuthor).name;
+        this.#price = parseFloat(album.price);
+        this.#formatedPrice = this.formatPrice(this.#price);
+        this.#count = 1;
+        this.#img = this.generateSrcImg(this.#serie,this.#number,this.#name);
     }
 
     formatPrice(price) {
@@ -20,7 +29,7 @@ class Album {
     }
 
     generateSrcImg(){
-        let imgSrc = "img/albums/" + this._serie + "-" + this._number + "-" + this._title;
+        let imgSrc = "img/albums/" + this.#serie + "-" + this.#number + "-" + this.#name;
         return imgSrc.replace(/'|!|\?|\.|"|:|\$/g, "") + ".jpg";
     }
 
@@ -30,90 +39,90 @@ class Album {
      */
     generateHTMLCard(){
         return $('<div class="col-12 col-sm-6 col-lg-6 col-xl-4 mb-5">\n' +
-            '               <div id="'+ this._id +'" class="card border border-dark">\n' +
-            '                <img class="card-img" src="' + this._img + '" alt="Card image cap">\n' +
+            '               <div id="'+ this.#id +'" class="card border border-dark">\n' +
+            '                <img class="card-img" src="' + this.#img + '" alt="Card image cap">\n' +
             '                <div class="card-body">\n' +
-            '                    <p class="card-title font-weight-bolder">'+ this._serie +'</p>\n' +
-            '                    <p class="card-text">' + this._number + ' ' + this._title + '</p>\n' +
-            '                    <p class="card-subtitle text-muted">Par ' + this._author + '</p>\n' +
-            '                    <p class="card-subtitle d-flex justify-content-end">' + this._formatedPrice + ' €' + '</p>\n' +
+            '                    <p class="card-title font-weight-bolder">'+ this.#serie +'</p>\n' +
+            '                    <p class="card-text">' + this.#number + ' ' + this.#name + '</p>\n' +
+            '                    <p class="card-subtitle text-muted">Par ' + this.#author + '</p>\n' +
+            '                    <p class="card-subtitle d-flex justify-content-end">' + this.#formatedPrice + ' €' + '</p>\n' +
             '                    <button class="btn btn-primary font-weight-bold addCart">Ajouter au panier</button>\n' +
             '                </div>\n' +
             '            </div>\n' +
             '        </div>')
     }
 
-    get title() {
-        return this._title;
+    get name() {
+        return this.#name;
     }
 
-    set title(value) {
-        this._title = value;
+    set name(value) {
+        this.#name = value;
     }
 
     get serie() {
-        return this._serie;
+        return this.#serie;
     }
 
     set serie(value) {
-        this._serie = value;
+        this.#serie = value;
     }
 
     get author() {
-        return this._author;
+        return this.#author;
     }
 
     set author(value) {
-        this._author = value;
+        this.#author = value;
     }
 
     get price() {
-        return this._price;
+        return this.#price;
     }
 
     set price(value) {
-        this._price = value;
+        this.#price = value;
     }
 
     get img() {
-        return this._img;
+        return this.#img;
     }
 
     set img(value) {
-        this._img = value;
+        this.#img = value;
     }
 
 
     get number() {
-        return this._number;
+        return this.#number;
     }
 
     set number(value) {
-        this._number = value;
+        this.#number = value;
     }
 
 
     get id() {
-        return this._id;
+        return this.#id;
     }
 
     set id(value) {
-        this._id = value;
+        this.#id = value;
     }
 
     get formatedPrice() {
-        return this._formatedPrice;
+        return this.#formatedPrice;
     }
 
     set formatedPrice(value) {
-        this._formatedPrice = value;
+        this.#formatedPrice = value;
     }
 
     get count() {
-        return this._count;
+        return this.#count;
     }
 
     set count(value) {
-        this._count = value;
+        this.#count = value;
     }
 }
