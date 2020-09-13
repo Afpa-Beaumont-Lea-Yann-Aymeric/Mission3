@@ -37,6 +37,7 @@ $(document).ready(function () {
                 search.up();
                 break;
             case "Escape":
+                search.hideSuggest();
                 break;
             case "Enter":
                 e.preventDefault();
@@ -47,14 +48,18 @@ $(document).ready(function () {
             default:
                 if (e.key.length === 1) value = $(this).val() + e.key;
                 search.query = value;
-                console.log(search.query);
                 search.showSuggest();
                 search.generateSuggest();
         }
     })
 
+    $(document).click(function (event) {
+        let target = event.target;
+        if ($(target).is(":not(td)")) search.hideSuggest();
+    })
+
     $(window).resize(function () {
-        search._nbRowMax = Math.floor((window.innerHeight - 200) / 33);
+        search.nbRowMax = Math.floor((window.innerHeight - 200) / 33);
         search.generateSuggest();
     })
 })

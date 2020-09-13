@@ -27,19 +27,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5dd3e84-06e4-41ef-9d80-e64d2c228db5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/authors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/class/Author.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/class/Serie.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/albums.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/albums.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/auteurs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/data/series.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Album.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Author.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Author.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Collection.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Pagination.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/class/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Search.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/helpers/helpers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/products/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/products/collection.js" afterDir="false" />
@@ -96,7 +88,7 @@
       <workItem from="1599147477007" duration="1399000" />
       <workItem from="1599155294305" duration="17272000" />
       <workItem from="1599667452662" duration="12942000" />
-      <workItem from="1599877939741" duration="17744000" />
+      <workItem from="1599877939741" duration="32136000" />
     </task>
     <servers />
   </component>
@@ -200,10 +192,22 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state width="1802" height="340" key="GridCell.Tab.3.right/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599161709468" />
+    <state x="2634" y="237" width="482" height="640" key="RollbackChangesDialog" timestamp="1599984244863">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2634" y="237" width="482" height="640" key="RollbackChangesDialog/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599984244863" />
     <state x="2369" y="189" width="1022" height="737" key="SettingsEditor" timestamp="1599681231695">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2369" y="189" width="1022" height="737" key="SettingsEditor/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599681231695" />
+    <state x="2020" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1599921567875">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599921567875" />
+    <state x="2020" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1599921567875">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2020" y="128" width="1720" height="852" key="com.intellij.history.integration.ui.views.FileHistoryDialog/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599921567875" />
     <state x="2607" y="162" width="618" height="783" key="find.popup" timestamp="1599155533261">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

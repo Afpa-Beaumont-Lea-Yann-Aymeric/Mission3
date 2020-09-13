@@ -33,7 +33,7 @@ class Collection {
         return this.#albumsToShow;
     }
 
-    set albums(value) {
+    set albumsToShow(value) {
         this.#albumsToShow = value;
     }
 }

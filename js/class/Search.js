@@ -4,6 +4,7 @@ class Search {
     #count;
     #matched;
     #nbRowMax;
+
     /**
      * @param {string} query
      */
@@ -45,29 +46,24 @@ class Search {
     }
 
     selectSuggest() {
-        let suggestSelected = $(".table-active").children("td").text();
+        let categorySelected = $(".table-active").attr('category');
+        let suggestSelected = $(".table-active").attr('name');
         if (suggestSelected !== "") {
             this.#query = suggestSelected;
         }
         $("#search").val(this.#query).focus();
         $("#suggest").hide();
-        this.launchSearch();
+        this.launchSearch(categorySelected);
     }
 
-    launchSearch() {
-        let albumsMatched = [];
-        let propertyToMatched = ["#title", "#serie", "#author"]
-        collection.albumsToShow.forEach(function (item, key) {
-                let matched = false;
-                propertyToMatched.forEach(function (property) {
-                    if (item[property].search(search.query) !== -1) {
-                        matched = true;
-                    }
-                })
-                if (matched) albumsMatched.push(item);
-            }
-        )
-        collection.albumsMatched = albumsMatched;
+    launchSearch(category) {
+        let found = database[category].find(element => element.name === this.#query)
+        if (category === "albums") {
+            collection.albumsToShow = [found];
+        } else {
+            collection.albumsToShow = found.albums;
+        }
+        console.log()
         collection.showAlbums();
     }
 
@@ -82,9 +78,17 @@ class Search {
         html += this.generateCategory("albums");
 
         $("#suggest").append(html);
+
+        let move = false;
+        $(document).mousemove(function () {
+            move = true;
+        })
+
         $(".matched").hover(function () {
-            $(".matched").removeClass("table-active");
-            $(this).addClass("table-active");
+            if (move) {
+                $(".matched").removeClass("table-active");
+                $(this).addClass("table-active");
+            }
         }, function () {
             $(this).removeClass("table-active");
         })
@@ -105,7 +109,9 @@ class Search {
                 break;
             case "albums":
                 categoryName = "Albums";
-
+                break;
+            default:
+                throw new Error("Veuillez entrer une catégorie valide : series, authors or albums");
         }
 
         let html = '<tr class="bg-dark">\n' +
@@ -113,14 +119,15 @@ class Search {
             '                    </tr>\n';
 
         this.#matched[category].forEach(function (value) {
-            html += '<tr id="matched' + search.#count + '" class="matched"><td>' + value.nom + '</td></tr>\n';
+            html += '<tr id="matched' + search.#count + '" class="matched" category="' + category + '" name="' + value.name + '"><td>' + value.name + (category === 'albums' ? ' (' + value.serie + ')' : '') + '</td></tr>\n';
             count++;
             search.#count++;
         })
         if (count === 0) {
             return '';
+        } else {
+            return html;
         }
-        return html;
     }
 
     /**
@@ -130,7 +137,7 @@ class Search {
     setMatched(categories) {
         this.#matched = {series: [], albums: [], authors: []};
         categories.forEach(function (category) {
-            window[category].forEach(function (value) {
+            database[category].forEach(function (value) {
                 let regex = "^" + search.query.toLowerCase();
                 if (value.name.toLowerCase().search(regex) !== -1) {
                     search.#matched[category].push(value);
@@ -140,7 +147,9 @@ class Search {
     }
 
     spreadMatched() {
-        let count = 0, spreadMatched = {series: [], albums: [], authors: []}, nbMax = 0;
+        let count = 0;
+        let spreadMatched = {series: [], albums: [], authors: []};
+        let nbMax = 0;
         for (let category in this.#matched) {
             if (this.#matched[category].length > nbMax) {
                 nbMax = this.#matched[category].length;
@@ -156,6 +165,7 @@ class Search {
             }
         }
         this.#matched = spreadMatched;
+        if(count <= 0) this.hideSuggest();
     }
 
     showSuggest() {
@@ -164,6 +174,10 @@ class Search {
         } else {
             $("#suggest").show();
         }
+    }
+
+    hideSuggest(){
+        $("#suggest").hide();
     }
 
     get query() {
@@ -189,5 +203,9 @@ class Search {
 
     set count(value) {
         this.#count = value;
+    }
+
+    set nbRowMax(value) {
+        this.#nbRowMax = value;
     }
 }
