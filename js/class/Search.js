@@ -63,7 +63,6 @@ class Search {
         } else {
             collection.albumsToShow = found.albums;
         }
-        console.log()
         collection.showAlbums();
     }
 

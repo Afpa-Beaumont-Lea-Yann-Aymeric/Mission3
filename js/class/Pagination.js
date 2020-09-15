@@ -42,7 +42,7 @@ class Pagination {
     }
 
     generateHtml() {
-        $(".pagination").empty();
+        $(".pagination-collection").empty();
         if (this.#nbPages <= 1) {
             return null;
         }
@@ -74,7 +74,7 @@ class Pagination {
             html += this.generateLi(this.#nbPages, this.#currentPage === this.#nbPages);
         }
         html += this.generateLi("+", this.#currentPage >= this.#nbPages);
-        $(".pagination").append(html);
+        $(".pagination-collection").append(html);
     }
 
     get itemsPerPage() {

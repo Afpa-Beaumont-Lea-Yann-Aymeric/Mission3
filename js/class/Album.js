@@ -45,7 +45,7 @@ class Album {
             '                    <p class="card-title font-weight-bolder">'+ this.#serie +'</p>\n' +
             '                    <p class="card-text">' + this.#number + ' ' + this.#name + '</p>\n' +
             '                    <p class="card-subtitle text-muted">Par ' + this.#author + '</p>\n' +
-            '                    <p class="card-subtitle d-flex justify-content-end">' + this.#formatedPrice + ' €' + '</p>\n' +
+            '                    <p class="card-subtitle d-flex justify-content-end font-weight-bold">' + this.#formatedPrice + ' €' + '</p>\n' +
             '                    <button class="btn btn-primary font-weight-bold addCart">Ajouter au panier</button>\n' +
             '                </div>\n' +
             '            </div>\n' +

@@ -17,7 +17,8 @@ class Collection {
         let albumsToShow = this.#albumsToShow.slice(start, end);
 
         albumsToShow.forEach(function (album) {
-            let card = new Album(album.id).generateHTMLCard();
+            let card = album.generateHTMLCard();
+            console.log(album);
             $("#collection").append(card);
         })
 

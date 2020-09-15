@@ -8,7 +8,6 @@ class Database {
     #authors;
 
     /**
-     *
      * @param {Map} albumsMap
      * @param {Map} seriesMap
      * @param {Map} authorsMap
@@ -48,9 +47,6 @@ class Database {
         this.#albums.sort(dynamicSort("name"));
         this.#series.sort(dynamicSort("name"));
         this.#authors.sort(dynamicSort("name"));
-        console.log(this.#albums);
-        console.log(this.#series);
-        console.log(this.#authors);
     }
 
     get series() {

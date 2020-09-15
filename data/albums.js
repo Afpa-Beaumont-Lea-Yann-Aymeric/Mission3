@@ -142,7 +142,7 @@ albums.set("151", {name: "Le temple de l'oubli", number: "02", idSerie: "22", id
 albums.set("152", {name: "La conque de Ramor", number: "01", idSerie: "22", idAuthor: "56", price: "14.50"});
 albums.set("153", {name: "(Avant la quête) Le grimoire des dieux", number: "A02", idSerie: "22", idAuthor: "55", price: "12.50"});
 albums.set("154", {name: "(Avant la quête) La voie du Rige", number: "A03", idSerie: "22", idAuthor: "54", price: "10.50"});
-albums.set("155", {name: "Gnamees de Troy", number: "00", idSerie: "40", idAuthor: "57", price: "11.60"});
+albums.set("155", {name: "Gnomes de Troy", number: "00", idSerie: "40", idAuthor: "57", price: "11.60"});
 albums.set("156", {name: "t.2", number: "02", idSerie: "41", idAuthor: "40", price: "12.45"});
 albums.set("157", {name: "t.1", number: "01", idSerie: "41", idAuthor: "40", price: "12.50"});
 albums.set("159", {name: "Reporter du \"petit vingtième\" au pays des soviets", number: "01", idSerie: "28", idAuthor: "31", price: "45.50"});
@@ -237,7 +237,7 @@ albums.set("250", {name: "Voir Venise ...", number: "09", idSerie: "12", idAutho
 albums.set("251", {name: "... et mourir", number: "10", idSerie: "12", idAuthor: "77", price: "12.65"});
 albums.set("252", {name: "Golden gate", number: "11", idSerie: "12", idAuthor: "77", price: "11.45"});
 albums.set("253", {name: "Shadow", number: "12", idSerie: "12", idAuthor: "77", price: "11.45"});
-albums.set("254", {name: "Le price de l'argent", number: "13", idSerie: "12", idAuthor: "77", price: "10.26"});
+albums.set("254", {name: "Le prix de l'argent", number: "13", idSerie: "12", idAuthor: "77", price: "10.26"});
 albums.set("255", {name: "La loi du dollar", number: "14", idSerie: "12", idAuthor: "77", price: "10.26"});
 albums.set("256", {name: "Les trois yeux des gardiens du Tao", number: "15", idSerie: "12", idAuthor: "77", price: "10.26"});
 albums.set("257", {name: "La voie et la vertu", number: "16", idSerie: "12", idAuthor: "77", price: "11.28"});
@@ -276,7 +276,7 @@ albums.set("291", {name: "Déesse blanche, déesse noire Tome 1", number: "01b",
 albums.set("292", {name: "Déesse blanche, déesse noire Tome 2", number: "02a", idSerie: "57", idAuthor: "91", price: "14.23"});
 albums.set("293", {name: "Les jeunes filles opérent", number: "04", idSerie: "34", idAuthor: "37", price: "14.23"});
 albums.set("294", {name: "J'étais infirme hier", number: "05", idSerie: "34", idAuthor: "37", price: "9.58"});
-albums.set("295", {name: "Gai rire à tout price", number: "06", idSerie: "34", idAuthor: "37", price: "10.65"});
+albums.set("295", {name: "Gai rire à tout prix", number: "06", idSerie: "34", idAuthor: "37", price: "10.65"});
 albums.set("296", {name: "Une croisière en enfer", number: "01", idSerie: "62", idAuthor: "92", price: "10.65"});
 albums.set("297", {name: "Les dents du requin", number: "02", idSerie: "62", idAuthor: "92", price: "10.65"});
 albums.set("298", {name: "L'homme à l'étoile d'argent", number: "02", idSerie: "63", idAuthor: "93", price: "9.99"});
@@ -499,7 +499,7 @@ albums.set("577", {name: "L'exode de kalandre", number: "17", idSerie: "87", idA
 albums.set("578", {name: "L'intégrale", number: "00", idSerie: "108", idAuthor: "150", price: "12.65"});
 albums.set("579", {name: "Catharsis", number: "01", idSerie: "57", idAuthor: "151", price: "12.65"});
 albums.set("580", {name: "Bienvenue en adolescence", number: "14", idSerie: "23", idAuthor: "19", price: "12.65"});
-albums.set("581", {name: "Astérix, le papyrusa de César", number: "36", idSerie: "32", idAuthor: "35", price: "12.65"});
+albums.set("581", {name: "Astérix, le papyrus de César", number: "36", idSerie: "32", idAuthor: "35", price: "12.65"});
 albums.set("582", {name: "Tout le monde te regarde", number: "17", idSerie: "5", idAuthor: "14", price: "12.64"});
 albums.set("583", {name: "La troisième mort de l'empereur", number: "05", idSerie: "86", idAuthor: "127", price: "12.64"});
 albums.set("584", {name: "Soeurs de sang", number: "14", idSerie: "13", idAuthor: "8", price: "12.64"});

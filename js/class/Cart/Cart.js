@@ -2,6 +2,7 @@ class Cart {
     #nbAlbums;
     #albums;
     #totalToPay;
+
     /**
      * @param {integer} numberAlbums
      * @param {Album[]} albums
@@ -41,6 +42,7 @@ class Cart {
             count += album.count;
         })
         this.#nbAlbums = count;
+        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -53,6 +55,7 @@ class Cart {
             total += album.price * album.count;
         })
         this.#totalToPay = total;
+        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -73,8 +76,6 @@ class Cart {
         this.#albums.forEach(function (album) {
             $("#cart-body .list-group").append(cart.generateItem(album));
         })
-        cart.calculTotalToPay();
-        cart.calculNbAlbums();
         $("#totalToPay").text(this.formatPrice(this.#totalToPay));
         $(".badge.badge-warning").text(this.#nbAlbums);
     }
@@ -93,17 +94,54 @@ class Cart {
             }
         })
         if (!contain) this.#albums.push(album);
+        this.calculTotalToPay();
+        this.calculNbAlbums();
+        this.setLocalStorage();
     }
 
     removeAlbum(album) {
         this.#albums.forEach(function (value, key, albums) {
             if (value.id === album.id) value.count--;
-            if(value.count === 0) albums.splice(key, 1);
+            if (value.count === 0) albums.splice(key, 1);
         })
+        this.calculTotalToPay();
+        this.calculNbAlbums();
+        this.setLocalStorage();
     }
 
     formatPrice(price) {
         return price.toFixed(2).replace(".", ",");
+    }
+
+    setLocalStorage() {
+        let object = {nbAlbums: this.#nbAlbums, albums: [], totalToPay: this.#totalToPay};
+        this.#albums.forEach(function (item, key) {
+            object.albums.push({id: item.id, count: item.count});
+        })
+        localStorage.setItem("CartStorage", JSON.stringify(object));
+    }
+
+    fromLocalStorage() {
+        let cartStorage = JSON.parse(localStorage.getItem("CartStorage"));
+        if (cartStorage !== null) {
+            this.#nbAlbums = cartStorage.nbAlbums;
+            cartStorage.albums.forEach(function (item) {
+                let album = new Album(item.id);
+                album.count = item.count;
+                cart.albums.push(album);
+            })
+            this.#totalToPay = cartStorage.totalToPay;
+        }
+    }
+
+    incrementItem(id) {
+        let album = new Album(id);
+        cart.addAlbum(album);
+    }
+
+    decrementItem(id) {
+        let album = new Album(id);
+        cart.removeAlbum(album);
     }
 
     get nbAlbums() {

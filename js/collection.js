@@ -8,18 +8,8 @@ let pagination = new Pagination(collection.albumsToShow, 12);
 
 let cart = new Cart(0, [], 0);
 
-
-function incrementItem(id) {
-    let album = new Album(id);
-    cart.addAlbum(album);
-    cart.updateHtml(id);
-}
-
-function decrementItem(id) {
-    let album = new Album(id);
-    cart.removeAlbum(album);
-    cart.updateHtml();
-}
+cart.fromLocalStorage();
+cart.updateHtml();
 
 $(document).ready(function () {
     collection.showAlbums();
