@@ -3,7 +3,7 @@ class FormSignUp {
     #lastName;
     #address;
     #zip;
-    #country;
+    #city;
     #email;
     #password;
     #confirm;
@@ -14,7 +14,7 @@ class FormSignUp {
         this.#lastName = '';
         this.#address = '';
         this.#zip = '';
-        this.#country = '';
+        this.#city = '';
         this.#email = '';
         this.#password = '';
         this.#confirm = '';
@@ -24,21 +24,35 @@ class FormSignUp {
         this[property] = value;
     }
 
-    verification(property, value){
+    verification(property, value) {
         let functionIsValid = property + "IsValid";
         return this[functionIsValid](value);
     }
 
-    allIsValid(){
-        console.log(this);
+    allIsValid() {
+        let arrayProperty = [
+            "address",
+            "confirm",
+            "city",
+            "email",
+            "firstName",
+            "lastName",
+            "password",
+            "zip"
+        ]
+        let formSignUp = this;
+        let valid = true;
+        arrayProperty.forEach(function (property) {
+            console.log(formSignUp[property]);
+            console.log(formSignUp[property] === "");
+            if (formSignUp[property] === "") valid = false;
+        })
+        return valid;
     }
 
-    createUser(){
-
-    }
-
-    storeUser(){
-
+    createUser() {
+        let user = new User(this.#firstName, this.#lastName, this.#address, this.#zip, this.#city, this.#email, this.#password);
+        user.setLocalStorage();
     }
 
     /**
@@ -69,9 +83,9 @@ class FormSignUp {
      * @param {string} lastName
      * @return {boolean} - Return true if lastName is valid, return false otherwise
      */
-    addressIsValid(lastName) {
-        let regex = /^[A-Za-z0-9,\-]{2,}$/;
-        return regex.test(lastName);
+    addressIsValid(address) {
+        let regex = /^[A-Za-z0-9,\- À-ÿ]{2,}$/;
+        return regex.test(address);
     }
 
     /**
@@ -103,7 +117,7 @@ class FormSignUp {
      * @return {boolean} - Return true if lastName is valid, return false otherwise
      */
     cityIsValid(zip) {
-        let regex = /^[0-9a-zA-Z,\-]{2,}$/;
+        let regex = /^[0-9a-zA-Z,\- À-ÿ]{2,}$/;
         return regex.test(zip);
     }
 
@@ -161,12 +175,12 @@ class FormSignUp {
         this.#zip = value;
     }
 
-    get country() {
-        return this.#country;
+    get city() {
+        return this.#city;
     }
 
-    set country(value) {
-        this.#country = value;
+    set city(value) {
+        this.#city = value;
     }
 
     get email() {

@@ -28,13 +28,10 @@
   <component name="ChangeListManager">
     <list default="true" id="e5dd3e84-06e4-41ef-9d80-e64d2c228db5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Album.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Author.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Author.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Collection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Database.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/Search.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/helpers/helpers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/products/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/products/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/SignUp/FormSignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/SignUp/FormSignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/SignUp/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/sign-up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +64,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Mission3-aymeric/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
@@ -88,7 +90,7 @@
       <workItem from="1599147477007" duration="1399000" />
       <workItem from="1599155294305" duration="17272000" />
       <workItem from="1599667452662" duration="12942000" />
-      <workItem from="1599877939741" duration="32136000" />
+      <workItem from="1599877939741" duration="42389000" />
     </task>
     <servers />
   </component>
@@ -124,10 +126,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2625" y="356" width="571" height="403" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599147595816" />
-    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1599676465738">
+    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1600201386030">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1599676465738" />
+    <state x="2724" y="273" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.28.1920.1172@1920.0.1920.1080" timestamp="1600201386030" />
     <state width="1802" height="340" key="GridCell.Tab.0.bottom" timestamp="1599161709467">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

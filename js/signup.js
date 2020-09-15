@@ -1,4 +1,5 @@
 let formSignUp = new FormSignUp();
+console.log(localStorage);
 
 $("#signUpForm input").focusout(function () {
     let id = $(this).attr('id');
@@ -16,9 +17,9 @@ $("#signUpForm input").focusout(function () {
 $("#signUpForm").submit(function (e) {
     e.preventDefault();
     $("#signUpForm input").focusout();
-    console.log(Object.values(formSignUp.__proto__));
-    for (let prop in formSignUp) {
-        console.log(prop);
-
+    if (formSignUp.allIsValid()) {
+        $("#signUpForm").empty();
+        $("#signUpForm").html("Merci " + formSignUp.firstName + " " + formSignUp.lastName + "<br/>Votre compte vient d'etre créé, vous pouvez vous connecter");
+        formSignUp.createUser();
     }
 })
