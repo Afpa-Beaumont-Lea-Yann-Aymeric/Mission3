@@ -1,15 +1,24 @@
 let formSignUp = new FormSignUp();
 
-$("#signUp input").focusout(function () {
+$("#signUpForm input").focusout(function () {
     let id = $(this).attr('id');
     let value = $(this).val();
-    console.log(formSignUp.verification(id, value));
     if (formSignUp.verification(id, value)) {
         formSignUp.updateForm(id, value);
         $(this).removeClass('is-invalid');
         $(this).addClass('is-valid');
-    }else{
+    } else {
         $(this).removeClass('is-valid');
         $(this).addClass('is-invalid');
+    }
+})
+
+$("#signUpForm").submit(function (e) {
+    e.preventDefault();
+    $("#signUpForm input").focusout();
+    console.log(Object.values(formSignUp.__proto__));
+    for (let prop in formSignUp) {
+        console.log(prop);
+
     }
 })

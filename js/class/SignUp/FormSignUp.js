@@ -1,7 +1,7 @@
 class FormSignUp {
     #firstName;
     #lastName;
-    #addresss;
+    #address;
     #zip;
     #country;
     #email;
@@ -12,7 +12,7 @@ class FormSignUp {
     constructor() {
         this.#firstName = '';
         this.#lastName = '';
-        this.#addresss = '';
+        this.#address = '';
         this.#zip = '';
         this.#country = '';
         this.#email = '';
@@ -22,12 +22,23 @@ class FormSignUp {
 
     updateForm(property, value) {
         this[property] = value;
-        console.log(this);
     }
 
     verification(property, value){
         let functionIsValid = property + "IsValid";
         return this[functionIsValid](value);
+    }
+
+    allIsValid(){
+        console.log(this);
+    }
+
+    createUser(){
+
+    }
+
+    storeUser(){
+
     }
 
     /**
@@ -53,6 +64,17 @@ class FormSignUp {
     }
 
     /**
+     * Test if the lastName is valid<br>
+     * Accept all lowercase and uppercase letters
+     * @param {string} lastName
+     * @return {boolean} - Return true if lastName is valid, return false otherwise
+     */
+    addressIsValid(lastName) {
+        let regex = /^[A-Za-z0-9,\-]{2,}$/;
+        return regex.test(lastName);
+    }
+
+    /**
      * Test if the email is valid<br>
      * Accept all strings that have a valid email format
      * @param {string} email
@@ -69,8 +91,19 @@ class FormSignUp {
      * @param {string} lastName
      * @return {boolean} - Return true if lastName is valid, return false otherwise
      */
-    zipIsVaid(zip) {
+    zipIsValid(zip) {
         let regex = /^[0-9]{5}$/;
+        return regex.test(zip);
+    }
+
+    /**
+     * Test if the lastName is valid<br>
+     * Accept all lowercase and uppercase letters
+     * @param {string} lastName
+     * @return {boolean} - Return true if lastName is valid, return false otherwise
+     */
+    cityIsValid(zip) {
+        let regex = /^[0-9a-zA-Z,\-]{2,}$/;
         return regex.test(zip);
     }
 
@@ -91,8 +124,9 @@ class FormSignUp {
      * @param {string} lastName
      * @return {boolean} - Return true if lastName is valid, return false otherwise
      */
-    confirmationIsVaid(confirmation) {
-        return confirmation === $("#password").val();
+    confirmIsValid(confirmation) {
+        let regex = /^[a-zA-Z0-9]{8,}$/;
+        return confirmation === $("#password").val() && regex.test(confirmation);
     }
 
     get firstName() {
@@ -111,12 +145,12 @@ class FormSignUp {
         this.#lastName = value;
     }
 
-    get addresss() {
-        return this.#addresss;
+    get address() {
+        return this.#address;
     }
 
-    set addresss(value) {
-        this.#addresss = value;
+    set address(value) {
+        this.#address = value;
     }
 
     get zip() {
@@ -155,7 +189,7 @@ class FormSignUp {
         return this.#confirm;
     }
 
-    set [confirm](value) {
-        this[confirm] = value;
+    set confirm(value) {
+        this.#confirm = value;
     }
 }
