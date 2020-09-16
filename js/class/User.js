@@ -7,7 +7,6 @@ class User {
     #email;
     #password;
 
-
     constructor(firstName, lastName, address, zip, city, email, password) {
         this.#firstName = firstName;
         this.#lastName = lastName;
