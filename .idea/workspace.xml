@@ -27,8 +27,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5dd3e84-06e4-41ef-9d80-e64d2c228db5" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/js/project/includes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/project/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/class/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/class/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/albums.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/data/albums.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/authors.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/data/authors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/series.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/data/series.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/cart/cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Album.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/database/Album.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Author.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/database/Author.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Cart/DetailsCart.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/cart/DetailsCart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/collection/Collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Database.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/database/Database.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Forms/Form.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/forms/Form.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Forms/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/forms/FormSignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Forms/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/forms/FormProfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/collection/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Serie.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/database/Serie.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/Session.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/session/Session.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/class/User.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/session/User.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/collection.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/collection/collection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/helpers/helpers.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/helpers/helpers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/includes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/profile/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/signup.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/project/signUp/signup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sign-up.html" beforeDir="false" afterPath="$PROJECT_DIR$/sign-up.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +93,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/js/project/signUp" />
+      <recent name="$PROJECT_DIR$/js/project/session" />
+      <recent name="$PROJECT_DIR$/js/project/profile" />
+      <recent name="$PROJECT_DIR$/js/project/cart" />
+      <recent name="$PROJECT_DIR$/js/project/collection" />
     </key>
   </component>
   <component name="RunManager">
@@ -88,6 +122,7 @@
       <workItem from="1599155294305" duration="17272000" />
       <workItem from="1599667452662" duration="12942000" />
       <workItem from="1599877939741" duration="43734000" />
+      <workItem from="1600271523726" duration="10066000" />
     </task>
     <servers />
   </component>
