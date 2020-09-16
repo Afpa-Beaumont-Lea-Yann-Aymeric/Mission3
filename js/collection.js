@@ -1,14 +1,3 @@
-let database = new Database(albums, series, authors);
-
-let search = new Search();
-
-let collection = new Collection(database.albums);
-
-let pagination = new Pagination(collection.albumsToShow, 12);
-
-let cart = new Cart(0, [], 0);
-
-cart.fromLocalStorage();
 cart.updateHtml();
 
 $(document).ready(function () {
