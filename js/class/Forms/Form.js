@@ -1,4 +1,4 @@
-class FormSignUp {
+class Form {
     #firstName;
     #lastName;
     #address;

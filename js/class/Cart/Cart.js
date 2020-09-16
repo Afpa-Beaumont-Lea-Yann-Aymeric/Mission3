@@ -19,14 +19,14 @@ class Cart {
      * @returns {string}
      */
     generateItem(album) {
-        return '<li id="' + album.id + '" class="list-group-item d-block p-1">\n' +
+        return '<li id="' + album.id + '" class="album list-group-item d-block p-1">\n' +
             '                <img class="w-75 d-block m-auto" src="' + album.generateSrcImg() + '">\n' +
             '                <ul class="pagination pagination-sm mt-1">\n' +
             '                    <li class="page-item">\n' +
-            '                        <a class="page-link" href="javascript:decrementItem(&quot;' + album.id + '&quot;)">-</a>\n' +
+            '                        <a class="page-link nav-link decrement" href="#">-</a>\n' +
             '                    </li>\n' +
             '                    <li class="page-item active"><a class="nbItems page-link">' + album.count + '</a></li>\n' +
-            '                    <li class="page-item"><a href="javascript:incrementItem(&quot;' + album.id + '&quot;)" class="page-link nav-link">+</a></li>\n' +
+            '                    <li class="page-item"><a href="#" class="page-link nav-link increment">+</a></li>\n' +
             '                    <li class="itemPrice m-auto font-weight-bold">' + this.formatPrice(album.price * album.count) + ' €</li>\n' +
             '                </ul>\n' +
             '            </li>';
@@ -78,6 +78,16 @@ class Cart {
         })
         $("#totalToPay").text(this.formatPrice(this.#totalToPay));
         $(".badge.badge-warning").text(this.#nbAlbums);
+
+        $(".increment").click(function (e) {
+            let id = $(e.target).closest(".album").attr("id");
+            cart.incrementItem(id);
+        })
+
+        $(".decrement").click(function (e) {
+            let id = $(e.target).closest(".album").attr("id");
+            cart.decrementItem(id);
+        })
     }
 
     /**
@@ -136,12 +146,14 @@ class Cart {
 
     incrementItem(id) {
         let album = new Album(id);
-        cart.addAlbum(album);
+        this.addAlbum(album);
+        this.updateHtml();
     }
 
     decrementItem(id) {
         let album = new Album(id);
-        cart.removeAlbum(album);
+        this.removeAlbum(album);
+        this.updateHtml();
     }
 
     get nbAlbums() {

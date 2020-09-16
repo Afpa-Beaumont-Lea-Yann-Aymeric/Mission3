@@ -16,10 +16,21 @@
     <script src="data/albums.js" defer></script>
     <script src="data/authors.js" defer></script>
     <script src="data/series.js" defer></script>
+    <script src="js/helpers/helpers.js" defer></script>
+    <script src="js/class/Database.js" defer></script>
+    <script src="js/class/Serie.js" defer></script>
+    <script src="js/class/Author.js" defer></script>
+    <script src="js/class/Collection.js" defer></script>
+    <script src="js/class/Pagination.js" defer></script>
     <script src="js/class/Album.js" defer></script>
     <script src="js/class/Cart/Cart.js" defer></script>
-    <script src="js/cart.js" defer></script>
+    <script src="js/class/Search.js" defer></script>
+    <script src="js/class/Session.js" defer></script>
+    <script src="js/class/User.js" defer></script>
     <script src="js/class/Cart/DetailsCart.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/includes.js" defer></script>
+    <script src="js/cart.js" defer></script>
 
     <title>Title</title>
     <script>
@@ -28,34 +39,7 @@
 
 
 <body>
-<header class="fixed-top">
-    <nav class="navbar navbar-light bg-light border-bottom border-dark d-flex">
-        <a href="index.html" class="d-none d-md-block navbar-brand"><img id="logo" src="img/logo.png"></a>
-        <button class="navbar-toggler d-md-none" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent"
-                aria-controls="navbarToggleExternalContent" aria-expanded="true" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="flex-fill mx-2 mx-md-5" style="height:38px;">
-            <form class="input-group">
-                <input id="search" type="text" class="form-control" placeholder="Rechercher un produit"
-                       aria-label="Recipient's username" aria-describedby="button-addon2" autofocus>
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form>
-            <div id="suggest" class="bg-white border border-dark" style="display:none">
-
-            </div>
-        </div>
-        <div class="d-none d-md-block">
-            <a href="account.html" class="h-100 text-center h5 d-block">
-                <i class="fas fa-user"></i><br/>
-                <span>Compte</span>
-            </a>
-        </div>
-    </nav>
-</header>
+<header class="fixed-top"></header>
 
 <div id="content" style="padding-top:6rem; min-height: 1000px">
     <div class="container">
@@ -73,27 +57,7 @@
     </div>
 </div>
 
-<footer>
-    <div class="bg-light">
-        <div class="container text-center text-dark">
-            <div class="row text-center">
-                <div class="col-9"></div>
-                <div class="col-3 mx-auto">
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Liens</h5>
-                    <ul class="list-unstyled">
-                        <li>
-                            <a href="contact.html">Contactez-nous</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="../index.html">eDrive</a>
-        </div>
-    </div>
-</footer>
+<footer></footer>
 
 
 </body>
