@@ -5,9 +5,9 @@ import {Collection} from "./collection/Collection.js";
 import {Pagination} from "./collection/Pagination.js";
 import {Session} from "./session/Session.js";
 import {User} from "./session/User.js";
+import {Album} from "./database/Album.js";
 
 let database = new Database();
-console.log(database);
 
 let search = new Search();
 

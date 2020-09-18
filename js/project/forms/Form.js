@@ -1,3 +1,5 @@
+import {User} from "../session/User.js";
+
 export class Form {
     #firstName;
     #lastName;
@@ -30,6 +32,8 @@ export class Form {
     }
 
     allIsValid() {
+        let array = Object.getOwnPropertyNames(this);
+        console.log(array);
         let arrayProperty = [
             "address",
             "confirm",
