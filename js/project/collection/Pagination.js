@@ -1,8 +1,11 @@
+import {collection, pagination} from "../main.js";
+
 export class Pagination {
     #itemsPerPage;
     #nbItems;
     #nbPages;
     #currentPage;
+
     /**
      * @param {integer} nbItems
      * @param {integer} itemsPerPage
@@ -12,6 +15,7 @@ export class Pagination {
         this.#nbItems = nbItems;
         this.#nbPages = Math.ceil(nbItems / itemsPerPage);
         this.#currentPage = 1;
+
     }
 
     generateLi(value, disabled = false) {
@@ -23,7 +27,8 @@ export class Pagination {
         } else {
             text = value;
         }
-        return '<li class="page-item ' + (this.#currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a class="page-link text-center" href="javascript:pagination.changePage(&quot;' + value + '&quot;)" style="width:44px">' + text + '</a></li>\n'
+
+        return '<li class="page-item ' + (this.#currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a id="page' + value + '" class="page-link text-center changePage" href="#" role="button" style="width:44px">' + text + '</a></li>\n'
     }
 
     changePage(page) {
@@ -75,6 +80,11 @@ export class Pagination {
         }
         html += this.generateLi("+", this.#currentPage >= this.#nbPages);
         $(".pagination-collection").append(html);
+        $(".changePage").click(function (e) {
+            e.preventDefault();
+            let page = $(this).attr("id").replace("page", "");
+            pagination.changePage(page);
+        })
     }
 
     get itemsPerPage() {

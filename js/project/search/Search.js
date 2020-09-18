@@ -1,3 +1,5 @@
+import {collection, search, database} from "../main.js";
+
 export class Search {
     #query;
     #selectedRow;

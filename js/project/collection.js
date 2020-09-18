@@ -1,4 +1,4 @@
-import {cart, collection, pagination, search, session} from "../main.js";
+import {cart, collection, pagination, search} from "./main.js";
 
 cart.updateHtml();
 

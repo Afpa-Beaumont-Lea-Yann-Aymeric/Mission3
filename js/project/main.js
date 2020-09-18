@@ -1,13 +1,13 @@
-import {Cart} from './cart/Cart.js';
+import {Cart} from "./cart/Cart.js";
 import {Database} from './database/Database.js';
-import {Search} from "./Search.js";
+import {Search} from "./search/Search.js";
 import {Collection} from "./collection/Collection.js";
 import {Pagination} from "./collection/Pagination.js";
 import {Session} from "./session/Session.js";
 import {User} from "./session/User.js";
+import {Album} from "./database/Album.js";
 
 let database = new Database();
-console.log(database);
 
 let search = new Search();
 
@@ -24,7 +24,7 @@ cart.fromLocalStorage();
 let htmlAccount;
 if (session.user === null) {
     htmlAccount = '<button id="login" class="btn btn-light font-weight-bold"\n' +
-        '            <span>Me connecter </span><i class="fas fa-sort-down"></i>\n' +
+        '            <span><i class="fas fa-sign-in-alt"></i> Connexion </span><i class="fas fa-sort-down"></i>\n' +
         '        </button>'
 } else {
     htmlAccount = '<div class="dropdown">\n' +
@@ -69,5 +69,6 @@ export{
     pagination,
     search,
     session,
-    collection
+    collection,
+    database
 }

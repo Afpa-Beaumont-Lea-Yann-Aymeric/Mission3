@@ -45,7 +45,6 @@ export class Cart {
             count += album.count;
         })
         this.#nbAlbums = count;
-        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -58,7 +57,6 @@ export class Cart {
             total += album.price * album.count;
         })
         this.#totalToPay = total;
-        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -83,11 +81,13 @@ export class Cart {
         $(".badge.badge-warning").text(this.#nbAlbums);
 
         $(".increment").click(function (e) {
+            e.preventDefault();
             let id = $(e.target).closest(".album").attr("id");
             cart.incrementItem(id);
         })
 
         $(".decrement").click(function (e) {
+            e.preventDefault();
             let id = $(e.target).closest(".album").attr("id");
             cart.decrementItem(id);
         })
@@ -99,14 +99,13 @@ export class Cart {
      * @param {Album} album - The album to add to cart
      */
     addAlbum(album) {
-        let contain = false
-        this.#albums.map(function (value) {
-            if (value.id === album.id) {
-                value.count++;
-                contain = true;
-            }
-        })
-        if (!contain) this.#albums.push(album);
+        let albumToAdd = this.#albums.find(x=>x.id===album.id);
+        if(typeof albumToAdd === "undefined"){
+            this.#albums.push(album);
+        }else{
+            albumToAdd.count++;
+        }
+        console.log(this.#albums);
         this.calculTotalToPay();
         this.calculNbAlbums();
         this.setLocalStorage();

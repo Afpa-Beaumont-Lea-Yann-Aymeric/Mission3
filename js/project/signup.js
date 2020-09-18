@@ -1,7 +1,6 @@
-import {FormSignUp} from "../forms/FormSignUp.js";
+import {FormSignUp} from "./forms/FormSignUp.js";
 
 let formSignUp = new FormSignUp();
-console.log(localStorage);
 
 $("#signUpForm input").focusout(function () {
     let id = $(this).attr('id');

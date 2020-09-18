@@ -28,6 +28,11 @@ export class Album {
         this.#img = this.generateSrcImg(this.#serie,this.#number,this.#name);
     }
 
+    /**
+     * @function <formatPrice> - <p>Test</p>
+     * @param {number} price
+     * @return {string}
+     */
     formatPrice(price) {
         return price.toFixed(2).replace(".", ",");
     }
