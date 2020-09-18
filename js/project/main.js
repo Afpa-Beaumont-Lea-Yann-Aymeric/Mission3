@@ -5,7 +5,7 @@ import {Collection} from "./collection/Collection.js";
 import {Pagination} from "./collection/Pagination.js";
 import {Session} from "./session/Session.js";
 import {User} from "./session/User.js";
-import {Album} from "./database/Album.js";
+import {WeatherAPI} from "./WeatherAPI.js";
 
 let database = new Database();
 
@@ -63,6 +63,9 @@ $("#loginForm").submit(function (e) {
         }
     })
 })
+
+let weatherAPI = new WeatherAPI("e43e71fe3e04a0d3dc7256b71cb6c29c");
+setInterval(weatherAPI.show(),5000);
 
 export{
     cart,
