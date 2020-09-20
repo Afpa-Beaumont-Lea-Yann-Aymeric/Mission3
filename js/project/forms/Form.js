@@ -47,8 +47,6 @@ export class Form {
         let formSignUp = this;
         let valid = true;
         arrayProperty.forEach(function (property) {
-            console.log(formSignUp[property]);
-            console.log(formSignUp[property] === "");
             if (formSignUp[property] === "") valid = false;
         })
         return valid;

@@ -21,7 +21,6 @@ export class Collection {
 
         albumsToShow.forEach(function (album) {
             let card = album.generateHTMLCard();
-            console.log(album);
             $("#collection").append(card);
         })
 

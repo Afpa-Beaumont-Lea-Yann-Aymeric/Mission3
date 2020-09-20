@@ -1,11 +1,11 @@
-import {Cart} from './cart/Cart.js';
+import {Cart} from "./cart/Cart.js";
 import {Database} from './database/Database.js';
-import {Search} from "./Search.js";
+import {Search} from "./search/Search.js";
 import {Collection} from "./collection/Collection.js";
 import {Pagination} from "./collection/Pagination.js";
 import {Session} from "./session/Session.js";
 import {User} from "./session/User.js";
-import {Album} from "./database/Album.js";
+import {WeatherAPI} from "./WeatherAPI.js";
 
 let database = new Database();
 
@@ -21,19 +21,19 @@ let session = new Session(JSON.parse(localStorage.getItem("session")));
 
 cart.fromLocalStorage();
 
+
 let htmlAccount;
 if (session.user === null) {
     htmlAccount = '<button id="login" class="btn btn-light font-weight-bold"\n' +
-        '            <span>Me connecter </span><i class="fas fa-sort-down"></i>\n' +
+        '            <span><i class="fas fa-sign-in-alt"></i> Connexion </span><i id="arrowConnect" class="fas fa-sort-down"></i>\n' +
         '        </button>'
 } else {
     htmlAccount = '<div class="dropdown">\n' +
         '  <button class="btn btn-light dropdown-toggle font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
-        '    Compte\n' +
+        '    <span class="d-none d-sm-inline">Compte</span><span class="d-sm-none"><i class="fas fa-user"></i></span>\n' +
         '  </button>\n' +
         '  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">\n' +
-        '    <a id="profile" class="dropdown-item" href="profile.html"><i class="fas fa-user"></i> Profil</a>\n' +
-        '    <a id="cart" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Panier</a>\n' +
+        '    <a id="cartAccount" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Panier</a>\n' +
         '    <div class="dropdown-divider"></div>\n' +
         '    <a id="signOut" class="dropdown-item" href=""><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>\n' +
         '  </div>\n' +
@@ -46,8 +46,8 @@ $("#signOut").click(function () {
 })
 
 $("#login").click(function () {
-    $(this).children("i").toggleClass("fa-sort-up");
-    $(this).children("i").toggleClass("fa-sort-down");
+    $("#arrowConnect").toggleClass("fa-sort-up");
+    $("#arrowConnect").toggleClass("fa-sort-down");
     $("#loginTooltip").toggleClass("d-none");
 })
 
@@ -64,10 +64,19 @@ $("#loginForm").submit(function (e) {
     })
 })
 
+$("#emptyCart").click(function(e){
+    e.preventDefault();
+    cart.empty();
+})
+
+let weatherAPI = new WeatherAPI("e43e71fe3e04a0d3dc7256b71cb6c29c");
+setInterval(weatherAPI.show(),5000);
+
 export{
     cart,
     pagination,
     search,
     session,
-    collection
+    collection,
+    database
 }

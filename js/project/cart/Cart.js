@@ -45,7 +45,6 @@ export class Cart {
             count += album.count;
         })
         this.#nbAlbums = count;
-        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -58,7 +57,6 @@ export class Cart {
             total += album.price * album.count;
         })
         this.#totalToPay = total;
-        localStorage.setItem('Cart', this);
     }
 
     /**
@@ -156,6 +154,14 @@ export class Cart {
     decrementItem(id) {
         let album = new Album(id);
         this.removeAlbum(album);
+        this.updateHtml();
+    }
+
+    empty(){
+        this.#albums = [];
+        this.calculTotalToPay();
+        this.calculNbAlbums();
+        this.setLocalStorage();
         this.updateHtml();
     }
 

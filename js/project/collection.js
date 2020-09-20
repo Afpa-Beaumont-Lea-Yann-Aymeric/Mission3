@@ -1,10 +1,9 @@
-import {cart, collection, pagination, search, session} from "../main.js";
+import {cart, collection, pagination, search} from "./main.js";
 
 cart.updateHtml();
 
 $(document).ready(function () {
     collection.showAlbums();
-    pagination.generateHtml();
 
     $("#search").keydown(function (e) {
         let value;
@@ -40,7 +39,9 @@ $(document).ready(function () {
     })
 
     $(window).resize(function () {
+        console.log(window.innerWidth);
         search.nbRowMax = Math.floor((window.innerHeight - 200) / 33);
         search.generateSuggest();
+        pagination.generateHtml();
     })
 })
