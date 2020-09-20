@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {collection, search, database} from "../main.js";
 
 export class Search {
@@ -18,6 +20,9 @@ export class Search {
         this.#nbRowMax = Math.floor((window.innerHeight - 200) / 33);
     }
 
+    /**
+     * Select the row above the current row selected
+     */
     up() {
         let newId;
         let active = $(".table-active");
@@ -31,6 +36,9 @@ export class Search {
         }
     }
 
+    /**
+     * Select the row below the current row selected
+     */
     down() {
         let newId;
         let active = $(".table-active");
@@ -47,6 +55,9 @@ export class Search {
         $("#matched" + newId).addClass("table-active");
     }
 
+    /**
+     * Valid the current selected row and lauch the search
+     */
     selectSuggest() {
         let categorySelected = $(".table-active").attr('category');
         let suggestSelected = $(".table-active").attr('name');
@@ -58,6 +69,10 @@ export class Search {
         this.launchSearch(categorySelected);
     }
 
+    /**
+     * Launch a search and show albums that match with it
+     * @param {string} category - The category in wich the search will be done
+     */
     launchSearch(category) {
         let found = database[category].find(element => element.name === this.#query)
         if (category === "albums") {
@@ -68,6 +83,9 @@ export class Search {
         collection.showAlbums();
     }
 
+    /**
+     * Generate the HTML of the suggest element below the search field
+     */
     generateSuggest() {
         $("#suggest").empty();
         this.#count = 0;
@@ -99,6 +117,11 @@ export class Search {
         })
     }
 
+    /**
+     * Generate a category in the suggest element
+     * @param {string} category - The category to generate
+     * @returns {string} - All rows generate in this category
+     */
     generateCategory(category) {
         let count = 0, categoryName;
         switch (category) {
@@ -132,21 +155,24 @@ export class Search {
     }
 
     /**
-     * @param {string[]} categories
-     * @returns {Object}
+     * Set the array of series, albums and authors that matched with the search field
+     * @param {string[]} categories - An array of categories names
      */
     setMatched(categories) {
         this.#matched = {series: [], albums: [], authors: []};
         categories.forEach(function (category) {
             database[category].forEach(function (value) {
-                let regex = "^" + search.query.toLowerCase();
-                if (value.name.toLowerCase().search(regex) !== -1) {
+                let regex = "^" + search.query.toLowerCase().removeAccent();
+                if (value.name.toLowerCase().removeAccent().search(regex) !== -1) {
                     search.#matched[category].push(value);
                 }
             })
         })
     }
 
+    /**
+     * Spread the array matched for all categories are appoximately the same number of result
+     */
     spreadMatched() {
         let count = 0;
         let spreadMatched = {series: [], albums: [], authors: []};
@@ -166,7 +192,7 @@ export class Search {
             }
         }
         this.#matched = spreadMatched;
-        if(count <= 0) this.hideSuggest();
+        if (count <= 0) this.hideSuggest();
     }
 
     showSuggest() {
@@ -177,7 +203,7 @@ export class Search {
         }
     }
 
-    hideSuggest(){
+    hideSuggest() {
         $("#suggest").hide();
     }
 

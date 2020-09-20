@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 export class WeatherAPI {
     #apiKey;
 

@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 export class User {
     #firstName;
     #lastName;
@@ -7,6 +9,15 @@ export class User {
     #email;
     #password;
 
+    /**
+     * @param {string} firstName
+     * @param {string} lastName
+     * @param {string} address
+     * @param {string} zip
+     * @param {string} city
+     * @param {string} email
+     * @param {string} password
+     */
     constructor(firstName, lastName, address, zip, city, email, password) {
         this.#firstName = firstName;
         this.#lastName = lastName;
@@ -17,6 +28,9 @@ export class User {
         this.#password = password;
     }
 
+    /**
+     * Set the informations of the user to the local storage
+     */
     setLocalStorage() {
         let users = JSON.parse(localStorage.getItem("users"));
         let newUser = {

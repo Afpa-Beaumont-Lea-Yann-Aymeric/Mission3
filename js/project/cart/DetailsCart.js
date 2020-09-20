@@ -1,6 +1,10 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {cart} from "../main.js";
 
 export class DetailsCart {
+
+    /** Generate HTML Table to show in cart.html */
     static generateHTML() {
         $("#detailsCart").empty();
         let html = ''
@@ -43,12 +47,14 @@ export class DetailsCart {
         }
         $("#detailsCart").append(html);
 
+        /** When a button + is clicked on an album in the cart, increment the count of this album */
         $(".increment").click(function (e) {
             let id = e.target.id.split("-")[1];
             cart.incrementItem(id);
             DetailsCart.generateHTML();
         })
 
+        /** When a button - is clicked on an album in the cart, decrement the count of this album */
         $(".decrement").click(function (e) {
             let id = e.target.id.split("-")[1];
             cart.decrementItem(id);

@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {cart, collection, pagination, search} from "./main.js";
 
 cart.updateHtml();

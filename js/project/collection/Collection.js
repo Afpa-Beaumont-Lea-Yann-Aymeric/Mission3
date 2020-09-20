@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {pagination, cart} from "../main.js";
 import {Album} from "../database/Album.js";
 
@@ -10,6 +12,9 @@ export class Collection {
         this.#albumsToShow = albumsToShow;
     }
 
+    /**
+     * Show all albums that match with the search, in the collection
+     */
     showAlbums() {
         $("#collection").empty();
         pagination.nbItems = this.#albumsToShow.length;

@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {Album} from "../database/Album.js";
 import {cart} from "../main.js";
 
@@ -18,11 +20,12 @@ export class Cart {
     }
 
     /**
-     * @param {Album} album
-     * @returns {string}
+     * Generate the HTML of one item in the cart
+     * @param {Album} album - The instance of the album to show in the cart
+     * @returns {HTMLLIElement}
      */
     generateItem(album) {
-        return '<li id="' + album.id + '" class="album list-group-item d-block p-1">\n' +
+        return $('<li id="' + album.id + '" class="album list-group-item d-block p-1">\n' +
             '                <img class="w-75 d-block m-auto" src="' + album.generateSrcImg() + '">\n' +
             '                <ul class="pagination pagination-sm mt-1">\n' +
             '                    <li class="page-item">\n' +
@@ -32,7 +35,7 @@ export class Cart {
             '                    <li class="page-item"><a href="#" class="page-link nav-link increment">+</a></li>\n' +
             '                    <li class="itemPrice m-auto font-weight-bold">' + this.formatPrice(album.price * album.count) + ' €</li>\n' +
             '                </ul>\n' +
-            '            </li>';
+            '            </li>');
     }
 
     /**
@@ -60,9 +63,9 @@ export class Cart {
     }
 
     /**
-     * Get the price
-     * @param id - The id of the item to get
-     * @returns {number}
+     * Get the price total of one item
+     * @param id - The id of the item to get the price
+     * @returns {number} - The price total of one item
      */
     getPriceItem(id) {
         let count = 0
@@ -72,6 +75,9 @@ export class Cart {
         return count;
     }
 
+    /**
+     * Update the html of the cart
+     */
     updateHtml() {
         $("#cart-body .list-group").empty();
         this.#albums.forEach(function (album) {
@@ -110,6 +116,10 @@ export class Cart {
         this.setLocalStorage();
     }
 
+    /**
+     * Remove an album of the cart
+     * @param {Album} album - The album to remove
+     */
     removeAlbum(album) {
         this.#albums.forEach(function (value, key, albums) {
             if (value.id === album.id) value.count--;
@@ -120,10 +130,18 @@ export class Cart {
         this.setLocalStorage();
     }
 
+    /**
+     * Format a price to this format 12,90
+     * @param {number} price - The price to format
+     * @returns {string} - The price formated
+     */
     formatPrice(price) {
         return price.toFixed(2).replace(".", ",");
     }
 
+    /**
+     * Set to local storage, the id and the count of all albums in the cart
+     */
     setLocalStorage() {
         let object = {nbAlbums: this.#nbAlbums, albums: [], totalToPay: this.#totalToPay};
         this.#albums.forEach(function (item, key) {
@@ -132,6 +150,9 @@ export class Cart {
         localStorage.setItem("CartStorage", JSON.stringify(object));
     }
 
+    /**
+     * Get the CartStorage on local storage and update the cart from it
+     */
     fromLocalStorage() {
         let cartStorage = JSON.parse(localStorage.getItem("CartStorage"));
         if (cartStorage !== null) {
@@ -145,18 +166,29 @@ export class Cart {
         }
     }
 
+    /**
+     * Increment the number of one item in the cart
+     * @param {string} id - The id of the album to increment
+     */
     incrementItem(id) {
         let album = new Album(id);
         this.addAlbum(album);
         this.updateHtml();
     }
 
+    /**
+     * Decrement the number of one item in the cart
+     * @param {string} id - The id of the album to decrement
+     */
     decrementItem(id) {
         let album = new Album(id);
         this.removeAlbum(album);
         this.updateHtml();
     }
 
+    /**
+     * Empty all the cart
+     */
     empty(){
         this.#albums = [];
         this.calculTotalToPay();

@@ -1,6 +1,5 @@
-/**
- * @file This class allow to
- */
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {albums as albumsMap} from '../../data/albums.js';
 import {series as seriesMap} from '../../data/series.js';
 import {authors as authorsMap} from '../../data/authors.js';

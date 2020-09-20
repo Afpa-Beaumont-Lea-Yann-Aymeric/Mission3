@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {Cart} from "./cart/Cart.js";
 import {Database} from './database/Database.js';
 import {Search} from "./search/Search.js";

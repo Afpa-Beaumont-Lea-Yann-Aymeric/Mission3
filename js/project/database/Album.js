@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {albums as albumsMap} from '../../data/albums.js';
 import {series as seriesMap} from '../../data/series.js';
 import {authors as authorsMap} from '../../data/authors.js';
@@ -13,7 +15,7 @@ export class Album {
     #count;
     #img;
     /**
-     * @param {string} id
+     * @param {string} id - The id of the album
      */
     constructor(id) {
         this.#id = id;
@@ -29,14 +31,18 @@ export class Album {
     }
 
     /**
-     * @function <formatPrice> - <p>Test</p>
-     * @param {number} price
-     * @return {string}
+     * Format the price of an album to this format 12,90
+     * @param {number} price - The price to format
+     * @return {string} - The formated price
      */
     formatPrice(price) {
         return price.toFixed(2).replace(".", ",");
     }
 
+    /**
+     * Generate the src of the image's album
+     * @returns {string}
+     */
     generateSrcImg(){
         let imgSrc = "img/albums/" + this.#serie + "-" + this.#number + "-" + this.#name;
         return imgSrc.replace(/'|!|\?|\.|"|:|\$/g, "") + ".jpg";

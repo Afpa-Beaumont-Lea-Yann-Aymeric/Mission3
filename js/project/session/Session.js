@@ -1,8 +1,13 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {User} from "./User.js";
 
 export class Session {
     #user;
 
+    /**
+     * @param {Object} userObject
+     */
     constructor(userObject) {
         if (userObject === null) {
             this.#user = null;

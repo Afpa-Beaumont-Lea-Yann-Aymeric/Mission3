@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {collection, pagination} from "../main.js";
 
 export class Pagination {
@@ -7,8 +9,8 @@ export class Pagination {
     #currentPage;
 
     /**
-     * @param {integer} nbItems
-     * @param {integer} itemsPerPage
+     * @param {Integer} nbItems - Number of albums to show
+     * @param {Integer} itemsPerPage - Number of item per page
      */
     constructor(nbItems, itemsPerPage) {
         this.#itemsPerPage = itemsPerPage;
@@ -18,6 +20,12 @@ export class Pagination {
 
     }
 
+    /**
+     * Generate a button of the pagination
+     * @param {String} value - The value of the button
+     * @param {boolean} disabled - True if the button must be disable, false otherwise
+     * @returns {HTMLLIElement} - Return the li tha contain th button
+     */
     generateLi(value, disabled = false) {
         let text
         if (value === "-") {
@@ -28,9 +36,14 @@ export class Pagination {
             text = value;
         }
 
-        return '<li class="page-item ' + (this.#currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a id="page' + value + '" class="page-link text-center changePage" href="#" role="button" style="width:44px">' + text + '</a></li>\n'
+        return '<li class="page-item ' + (this.#currentPage === value ? "active" : "") + ' ' + (disabled ? "disabled" : "") + '"><a id="page' + value + '" class="page-link text-center changePage" href="#" role="button" style="width:44px">' + text + '</a></li>';
     }
 
+    /**
+     * Change the current page
+     * @param {String} page - The number of the new page, or "+" for increment or "-" for decrement
+     * @returns {void}
+     */
     changePage(page) {
         if (page === "-") {
             this.#currentPage--;
@@ -45,6 +58,10 @@ export class Pagination {
         collection.showAlbums();
     }
 
+    /**
+     * Generate the HTML of the pagination
+     * @returns {void}
+     */
     generateHtml() {
         let nbButton = Math.floor($(".pagination-collection").innerWidth() / 50);
         if (nbButton % 2 === 0) nbButton--;

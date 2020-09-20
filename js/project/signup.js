@@ -1,3 +1,5 @@
+/** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
+
 import {FormSignUp} from "./forms/FormSignUp.js";
 
 let formSignUp = new FormSignUp();
