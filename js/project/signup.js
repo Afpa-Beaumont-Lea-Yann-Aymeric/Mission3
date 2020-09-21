@@ -1,8 +1,8 @@
 /** @author Aymeric Mary <aymeric.mary.pls@gmail.com> */
 
-import {FormSignUp} from "./forms/FormSignUp.js";
+import {Form} from "./forms/Form.js";
 
-let formSignUp = new FormSignUp();
+let formSignUp = new Form();
 
 $("#signUpForm input").focusout(function () {
     let id = $(this).attr('id');

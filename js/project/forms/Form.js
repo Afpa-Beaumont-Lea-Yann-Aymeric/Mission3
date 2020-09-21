@@ -219,11 +219,11 @@ export class Form {
         this.#password = value;
     }
 
-    get confirm() {
-        return this.#confirm;
+    get confirmation() {
+        return this.#confirmation;
     }
 
-    set confirm(value) {
-        this.#confirm = value;
+    set confirmation(value) {
+        this.#confirmation = value;
     }
 }

@@ -7,7 +7,7 @@ import {Collection} from "./collection/Collection.js";
 import {Pagination} from "./collection/Pagination.js";
 import {Session} from "./session/Session.js";
 import {User} from "./session/User.js";
-import {WeatherAPI} from "./WeatherAPI.js";
+import {WeatherAPI} from "../API/WeatherAPI.js";
 
 let database = new Database();
 
@@ -26,13 +26,13 @@ cart.fromLocalStorage();
 
 let htmlAccount;
 if (session.user === null) {
-    htmlAccount = '<button id="login" class="btn btn-light font-weight-bold"\n' +
-        '            <span><i class="fas fa-sign-in-alt"></i> Connexion </span><i id="arrowConnect" class="fas fa-sort-down"></i>\n' +
+    htmlAccount = '<button id="login" class="btn btn-light font-weight-bold">\n' +
+        '            <i class="fas fa-sign-in-alt"></i> </i><span class="d-none d-sm-inline">Connexion </span><i id="arrowConnect" class="fas fa-sort-down"></i>\n' +
         '        </button>'
 } else {
     htmlAccount = '<div class="dropdown">\n' +
         '  <button class="btn btn-light dropdown-toggle font-weight-bold" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\n' +
-        '    <span class="d-none d-sm-inline">Compte</span><span class="d-sm-none"><i class="fas fa-user"></i></span>\n' +
+        '    <i class="fas fa-user"></i><span class="d-none d-sm-inline"> Compte</span>\n' +
         '  </button>\n' +
         '  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">\n' +
         '    <a id="cartAccount" class="dropdown-item" href="cart.html"><i class="fas fa-shopping-cart"></i> Panier</a>\n' +
@@ -66,15 +66,43 @@ $("#loginForm").submit(function (e) {
     })
 })
 
-$("#emptyCart").click(function(e){
+$("#emptyCart").click(function (e) {
     e.preventDefault();
     cart.empty();
 })
 
-let weatherAPI = new WeatherAPI("e43e71fe3e04a0d3dc7256b71cb6c29c");
-setInterval(weatherAPI.show(),5000);
+$("#search").keydown(function (e) {
+    let value;
+    switch (e.key) {
+        case "ArrowDown":
+            e.preventDefault();
+            search.down();
+            break;
+        case "ArrowUp":
+            e.preventDefault();
+            search.up();
+            break;
+        case "Escape":
+            search.hideSuggest();
+            break;
+        case "Enter":
+            e.preventDefault();
+            search.selectSuggest();
+            break;
+        case "Backspace":
+            value = $(this).val().slice(0, -1);
+        default:
+            if (e.key.length === 1) value = $(this).val() + e.key;
+            search.query = value;
+            search.showSuggest();
+            search.generateSuggest();
+    }
+})
 
-export{
+let weatherAPI = new WeatherAPI("e43e71fe3e04a0d3dc7256b71cb6c29c");
+setInterval(weatherAPI.show(), 5000);
+
+export {
     cart,
     pagination,
     search,
